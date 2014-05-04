@@ -1,1 +1,5 @@
-This file was created by IntelliJ IDEA 12.1.6 for binding GitHub repository
+This is a tiny blog system based on SpringMVC and Hibernate,just for learning spring.
+Use:
+    1.Spring IoC container
+    2.Spring mvc for web
+    3.hibernate for mysql database access
