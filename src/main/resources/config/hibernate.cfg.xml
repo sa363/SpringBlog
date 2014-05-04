@@ -8,18 +8,17 @@
         <property name="dialect">
             org.hibernate.dialect.MySQLDialect
         </property>
-        <!--<property name="hibernate.cache.provider_class">-->
-            <!--org.hibernate.cache.ehcache.EhCacheRegionFactory-->
-        <!--</property>-->
         <property name="hibernate.cache.use_second_level_cache">
             true
         </property>
         <property name="cache.region.factory_class">org.hibernate.cache.EhCacheRegionFactory</property>
         <property name="hibernate.cache.use_query_cache">true</property>
 
-        <!--<mapping class="com.xin.model.Hello"/>-->
-
         <class-cache class="com.xin.model.Hello" usage="read-write"/>
+        <class-cache class="com.xin.model.Categories" usage="read-write"/>
+        <class-cache class="com.xin.model.Comments" usage="read-write"/>
+        <class-cache class="com.xin.model.Posts" usage="read-write"/>
+        <class-cache class="com.xin.model.User" usage="read-write"/>
 
     </session-factory>
 
