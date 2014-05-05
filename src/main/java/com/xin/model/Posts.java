@@ -1,8 +1,6 @@
 package com.xin.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 /**
@@ -33,6 +31,7 @@ public class Posts {
 
     @javax.persistence.Column(name = "post_id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getPostId() {
         return postId;
     }

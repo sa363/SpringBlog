@@ -1,8 +1,6 @@
 package com.xin.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 /**
@@ -31,6 +29,7 @@ public class Comments {
 
     @javax.persistence.Column(name = "coment_id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getComentId() {
         return comentId;
     }

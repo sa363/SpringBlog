@@ -1,8 +1,6 @@
 package com.xin.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * User: Xin
@@ -28,6 +26,7 @@ public class User {
 
     @javax.persistence.Column(name = "user_id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getUserId() {
         return userId;
     }
