@@ -8,8 +8,8 @@
 <html>
 <head>
     <title></title>
-    <script type="text/javascript" src="/resources/jquery-1.4.min.js"></script>
-    <script type="text/javascript" src="/resources/json.min.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery-1.4.min.js"></script>
+    <script type="text/javascript" src="/resources/js/json.min.js"></script>
 </head>
 <body>
      <h1>Hello</h1>

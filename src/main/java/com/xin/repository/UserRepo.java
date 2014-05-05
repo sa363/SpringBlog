@@ -16,6 +16,8 @@ public interface UserRepo {
 
     User findById(Long id) throws DataAccessException;
 
+    User findByName(String name) throws DataAccessException;
+
     Collection<User> findAll() throws DataAccessException;
 
 
