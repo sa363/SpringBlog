@@ -1,6 +1,8 @@
 package com.xin.service.impl;
 
+import com.xin.model.Posts;
 import com.xin.model.User;
+import com.xin.repository.PostsRepo;
 import com.xin.repository.UserRepo;
 import com.xin.service.SpringBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class SpringBlogServiceImpl implements SpringBlogService {
 
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private PostsRepo postsRepo;
 
 
     @Transactional
@@ -45,5 +50,12 @@ public class SpringBlogServiceImpl implements SpringBlogService {
     @Override
     public Collection<User> findAllUser() throws DataAccessException {
         return this.userRepo.findAll();
+    }
+
+
+    @Transactional
+    @Override
+    public Long savePosts(Posts posts) throws DataAccessException {
+        return this.postsRepo.save(posts);
     }
 }

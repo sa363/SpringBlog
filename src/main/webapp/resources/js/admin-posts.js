@@ -1,6 +1,6 @@
 (function($) {
     function _init(){
-        console.log($('.admin-container'));
+
 
 
     }

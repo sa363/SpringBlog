@@ -1,5 +1,7 @@
 package com.xin.web;
 
+import com.xin.model.BlogConstant;
+import com.xin.model.Posts;
 import com.xin.model.User;
 import com.xin.service.SpringBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -74,6 +80,44 @@ public class AdminController {
     @RequestMapping(value = "/comments",method = RequestMethod.GET)
     public ModelAndView commentsHandler(){
         return new ModelAndView("admin.comments");
+    }
+
+    @RequestMapping(value = "/new/post",method = RequestMethod.POST)
+    public @ResponseBody Map<String,Object> savePosts(HttpServletRequest request){
+
+        Map<String,Object> resultMap = new HashMap<String, Object>();
+
+        User user = (User) request.getSession().getAttribute("user");
+        Posts posts = new Posts();
+        String categoryIdStr = request.getParameter("categoryId");
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        Long categoryId = null;
+        if(categoryIdStr != null && !categoryIdStr.equals("")){
+            categoryId = Long.parseLong(categoryIdStr);
+
+        }
+        posts.setAuthorId(user.getUserId());
+
+        if(categoryId != null){
+            posts.setPostCategory(categoryId);
+        }
+        if(title != null){
+            posts.setPostTitle(title);
+
+        }
+        if(content != null){
+            posts.setPostContent(content);
+        }
+        posts.setPostDate(new Date());
+        posts.setPostModified(new Date());
+
+        Long id = this.springBlogService.savePosts(posts);
+
+        resultMap.put("postsId",id);
+        resultMap.put("returnCode", BlogConstant.RETURN_CODE_SUCC);
+
+        return resultMap;
     }
 
 }

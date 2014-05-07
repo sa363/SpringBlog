@@ -39,6 +39,6 @@
             </div>
         </div><!-- /.col-lg-10 -->
     </div><!-- /.row -->
-
+    <script src="/resources/js/admin-posts.js"></script>
   </body>
 </html>

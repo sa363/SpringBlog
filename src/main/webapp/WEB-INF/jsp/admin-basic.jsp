@@ -22,22 +22,29 @@
 </head>
 
 <body>
-    <tiles:insertAttribute name="header" />
-    <!-- /.container -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                <tiles:insertAttribute name="menu"/>
-            </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <tiles:insertAttribute name="body"/>
+    <div class="admin-container">
+
+        <tiles:insertAttribute name="header" />
+        <!-- /.container -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <tiles:insertAttribute name="menu"/>
+                </div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <tiles:insertAttribute name="body"/>
+                </div>
             </div>
         </div>
+
+
     </div>
 
     <!-- JavaScript -->
 
     <script src="/resources/js/bootstrap.js"></script>
+    <script src="/resources/js/dropdown.js"/>
+    <script src="/resources/js/alert.js"/>
     <script src="/resources/js/admin.js"></script>
 
 </body>

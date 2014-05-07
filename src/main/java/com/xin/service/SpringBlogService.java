@@ -1,5 +1,6 @@
 package com.xin.service;
 
+import com.xin.model.Posts;
 import com.xin.model.User;
 import org.springframework.dao.DataAccessException;
 
@@ -20,4 +21,6 @@ public interface SpringBlogService {
     User findUserByName(String name) throws DataAccessException;
 
     Collection<User> findAllUser() throws DataAccessException;
+
+    Long savePosts(Posts posts) throws DataAccessException;
 }

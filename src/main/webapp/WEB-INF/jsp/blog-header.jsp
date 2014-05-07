@@ -5,7 +5,6 @@
 <head>
 </head>
 <body>
-    <input id="admininfo" type="hidden" username="${username}">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
