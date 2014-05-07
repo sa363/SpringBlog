@@ -1,10 +1,11 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 </head>
 <body>
-
+    <input id="admininfo" type="hidden" username="${username}">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -28,7 +29,7 @@
                     </li>
                 </ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Admin Name</a></li>
+					<li><a class="header-user-name" href="#"><c:out value="${user.userName}"/></a></li>
 					<li><a href="#">Settings</a></li>
 					<li><a href="#">Profile</a></li>
 					<li><a href="#">Help</a></li>

@@ -4,11 +4,13 @@ import com.xin.model.User;
 import com.xin.service.SpringBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 
 /**
  * Author: Xin
@@ -35,15 +37,28 @@ public class AdminController {
         mav.setViewName("admin.login");
         User user = this.springBlogService.findUserByName(name);
         if(user != null){
-            user.getPassword().equals(password.trim());
-            mav.addObject("user",user);
-            mav.setViewName("admin.index");
-            return mav;
+            if(user.getPassword().equals(password.trim())){
+                mav.addObject("user",user);
+                mav.setViewName("admin.index");
+            }
 
+            return mav;
         }
         return mav;
     }
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    public ModelAndView indexHandler(HttpServletRequest request,ModelAndView mav){
 
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+
+        if(user == null){
+            mav.setView(new RedirectView("/admin"));
+        }else{
+            mav.setViewName("admin.index");
+        }
+        return mav;
+    }
     @RequestMapping(value = "/new",method = RequestMethod.GET)
     public ModelAndView newHandler(){
         return new ModelAndView("admin.new");
