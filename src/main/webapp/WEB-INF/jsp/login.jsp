@@ -24,14 +24,18 @@
 
     <div class="container">
 
-      <form class="form-signin" role="form">
+      <form class="form-signin" role="form" method="post">
+
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="form-control form-signin-name" placeholder="User name" required autofocus>
-        <input type="password" class="form-control form-signin-password" placeholder="Password" required>
+
+        <input name="name"  type="text" class="form-control form-signin-name" placeholder="User name" required autofocus>
+        <input name="password" type="password" class="form-control form-signin-password" placeholder="Password" required>
+
         <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" value="remember-me"> Remember me
         </label>
-        <a class="btn btn-lg btn-primary btn-block btn-login">Sign in</a>
+        <button type ="submit" class="btn btn-lg btn-primary btn-block ">Sign in</button>
+
       </form>
 
     </div> <!-- /container -->
@@ -43,25 +47,6 @@
   </body>
 
   <script>
-      $(document).ready(function(){
 
-          $('.btn-login').click(function(){
-              var name = $('.form-signin-name').val();
-              var password = $('.form-signin-password').val();
-
-              var data = {
-                  name : name,
-                  password : password
-              }
-              var url = 'login';
-              console.log(data);
-              $.postJSON(url,data,function(data){
-
-                  console.log(data);
-
-              })
-          });
-
-      });
   </script>
 </html>

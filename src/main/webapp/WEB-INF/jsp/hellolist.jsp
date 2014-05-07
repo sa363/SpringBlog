@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Xin
-  Date: 14-5-5
-  Time: 下午4:15
+  Date: 14-5-6
+  Time: 上午11:13
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -10,6 +10,6 @@
     <title></title>
 </head>
 <body>
-      <h1>Admin</h1>
+   <h1>hello list</h1>
 </body>
 </html>

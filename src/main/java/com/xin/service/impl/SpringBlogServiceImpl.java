@@ -35,6 +35,7 @@ public class SpringBlogServiceImpl implements SpringBlogService {
         return this.userRepo.findById(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public User findUserByName(String name) throws DataAccessException {
         return this.userRepo.findByName(name);

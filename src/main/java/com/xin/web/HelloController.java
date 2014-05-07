@@ -7,8 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Author: Xin
@@ -43,8 +46,13 @@ public class HelloController {
 
 
     @RequestMapping("/hellos")
-    public @ResponseBody List<Hello> listHello(){
-        return helloService.listHello();
+    public ModelAndView listHello(){
+        Map<String,Object> model = new HashMap<String,Object>();
+        ModelAndView mav = new ModelAndView();
+        model.put("hellos",helloService.listHello());
+        mav.addObject(model);
+        mav.setViewName("hellolist");
+        return mav;
     }
     @RequestMapping("/hello/{helloId}")
     public @ResponseBody Hello getHello(@PathVariable("helloId") Integer helloId){

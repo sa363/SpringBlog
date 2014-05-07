@@ -47,7 +47,7 @@ public class UserRepoImpl implements UserRepo{
 
     @Override
     public User findByName(String name) throws DataAccessException {
-        Query query = getCurrentSession().createQuery("from User as user where user.username=:name");
+        Query query = getCurrentSession().createQuery("from User as user where user.userName=:name");
         query.setString("name",name);
         List<User> userList = query.list();
         User user = null;

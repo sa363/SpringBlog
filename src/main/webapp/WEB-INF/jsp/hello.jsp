@@ -13,20 +13,20 @@
 </head>
 <body>
      <h1>Hello</h1>
-     <a class="listBtn">List All</a>
+     <a class="listBtn" href="/hellos">List All</a>
 </body>
 
 
 <script>
-    $(document).ready(function() {
-
-        $('.listBtn').click(function(){
-            $.getJSON('/hellos',null,function(data){
-                console.log(data);
-            });
-
-        });
-
-    })
+//    $(document).ready(function() {
+//
+//        $('.listBtn').click(function(){
+//            $.getJSON('/hellos',null,function(data){
+//                console.log(data);
+//            });
+//
+//        });
+//
+//    })
 </script>
 </html>
