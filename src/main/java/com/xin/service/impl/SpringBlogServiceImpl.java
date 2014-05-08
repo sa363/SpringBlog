@@ -58,4 +58,11 @@ public class SpringBlogServiceImpl implements SpringBlogService {
     public Long savePosts(Posts posts) throws DataAccessException {
         return this.postsRepo.save(posts);
     }
+
+
+    @Transactional(readOnly = true)
+    @Override
+    public Posts findPostsById(Long id) throws DataAccessException {
+        return this.postsRepo.find(id);
+    }
 }

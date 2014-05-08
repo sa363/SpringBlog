@@ -41,7 +41,7 @@ public class PostsRepoImpl implements PostsRepo {
 
     @Override
     public Posts find(Long id) throws DataAccessException {
-        return null;
+        return (Posts) this.getCurrentSession().get(Posts.class, id);
     }
 
     @Override

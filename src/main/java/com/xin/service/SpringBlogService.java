@@ -23,4 +23,6 @@ public interface SpringBlogService {
     Collection<User> findAllUser() throws DataAccessException;
 
     Long savePosts(Posts posts) throws DataAccessException;
+
+    Posts findPostsById(Long id) throws DataAccessException;
 }

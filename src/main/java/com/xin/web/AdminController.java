@@ -119,10 +119,20 @@ public class AdminController {
 
         Long id = this.springBlogService.savePosts(posts);
 
-        resultMap.put("postsId",id);
+        resultMap.put("postId",id);
         resultMap.put("returnCode", BlogConstant.RETURN_CODE_SUCC);
 
         return resultMap;
+    }
+
+    @RequestMapping(value = "/posts/{postId}",method = RequestMethod.GET)
+    public ModelAndView getPost(@PathVariable Long postId,ModelAndView mav){
+        Map<String,Object> model = new HashMap<String, Object>();
+        Posts posts = this.springBlogService.findPostsById(postId);
+        model.put("post",posts);
+        mav.addObject(model);
+        mav.setViewName("admin.posts.show");
+        return mav;
     }
 
 }

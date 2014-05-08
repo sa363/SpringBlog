@@ -41,6 +41,11 @@
             _savePosts();
 
         });
+        $('.new-post-publish-btn').on('click',function(){
+            _publishPosts();
+
+        });
+
 
     }
 
@@ -61,9 +66,38 @@
         $.post(url,data,function(data){
             console.log('save post success----'+data);
             if(data.returnCode == 1){
+
                 $('.admin-new-post-alert').addClass('alert-success');
                 $('.admin-new-post-alert').css('display','block');
+            }
 
+        });
+
+    }
+
+    function _publishPosts(){
+
+        var categoryId = $('.newpost-category-btn-name').attr('data-key');
+        var postTitle = $('.admin-newpost-title').val();
+        var postContent = $('.admin-new-post-content').val();
+
+        var url = '/admin/new/post';
+        var data = {
+            categoryId : categoryId,
+            title : postTitle,
+            content : postContent
+        };
+
+        $.post(url,data,function(data){
+            console.log('save post success----'+data);
+            if(data.returnCode == 1){
+
+                var postId = data.postId;
+
+                $.admin.container.load('/admin/posts/'+postId,function(data){
+                    console.log(data);
+                    console.log(data.post);
+                });
 
             }
 
@@ -71,6 +105,7 @@
         });
 
     }
+
     _init();
 
 

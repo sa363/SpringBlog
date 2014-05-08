@@ -9,9 +9,6 @@
     <definition name="admin.login" template="/WEB-INF/jsp/login.jsp">
     </definition>
 
-
-
-
     <definition name="admin.index" template="/WEB-INF/jsp/admin-index.jsp">
         <put-attribute name="header" value="/WEB-INF/jsp/blog-header.jsp" />
         <put-attribute name="menu" value="/WEB-INF/jsp/admin-menu.jsp" />
@@ -23,12 +20,19 @@
     <definition name="admin.new" extends="blank.template">
         <put-attribute name="content" value="/WEB-INF/jsp/admin-newpost.jsp" />
     </definition>
-    <definition name="admin.posts" template="/WEB-INF/jsp/admin-posts.jsp">
+
+    <definition name="admin.posts" extends="blank.template">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin-posts.jsp" />
     </definition>
-    <definition name="admin.categories" template="/WEB-INF/jsp/admin-categories.jsp">
+    <definition name="admin.categories" extends="blank.template">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin-categories.jsp" />
     </definition>
-    <definition name="admin.comments" template="/WEB-INF/jsp/admin-comments.jsp">
+    <definition name="admin.comments" extends="blank.template">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin-comments.jsp" />
     </definition>
 
+    <definition name="admin.posts.show" extends="blank.template">
+        <put-attribute name="content" value="/WEB-INF/jsp/blog-posts.jsp" />
+    </definition>
 
 </tiles-definitions>
