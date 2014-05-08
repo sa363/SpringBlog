@@ -12,6 +12,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -96,6 +97,16 @@ public class AdminController {
         String categoryIdStr = request.getParameter("categoryId");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
+        String postIdStr = request.getParameter("postId");
+
+
+        if(postIdStr != null && !postIdStr.equals("")){
+            Long postId = Long.parseLong(postIdStr);
+            if(postId != null){
+                post.setPostId(postId);
+            }
+        }
+
         Long categoryId = null;
         if(categoryIdStr != null && !categoryIdStr.equals("")){
             categoryId = Long.parseLong(categoryIdStr);
@@ -125,11 +136,19 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/posts/{postId}",method = RequestMethod.GET)
-    public ModelAndView getPost(@PathVariable Long postId){
+    public ModelAndView findPost(@PathVariable Long postId){
 
         Map<String,Object> model = new HashMap<String, Object>();
+
         Post post = this.springBlogService.findPostById(postId);
+        User author = this.springBlogService.findUserById(post.getAuthorId());
+        SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss E");
+        String postDate = dateformat.format(post.getPostDate());
+
+
         model.put("post",post);
+        model.put("author",author.getUserName());
+        model.put("postDate",postDate);
 
         return new ModelAndView("admin.posts.show",model);
     }

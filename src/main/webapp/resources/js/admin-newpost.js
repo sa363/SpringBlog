@@ -1,10 +1,7 @@
 (function($) {
     function _init(){
         _initCategorySelectMenu();
-        _initEvent()
-
-
-
+        _initEvent();
     }
     function _initCategorySelectMenu(){
         var html = '';
@@ -29,11 +26,6 @@
 
         });
 
-        $('.newpost-category-btn').on('click',function(){
-            $('.dropdown-toggle').dropdown();
-
-        });
-
     }
     function _initEvent(){
 
@@ -46,15 +38,15 @@
 
         });
 
-
     }
 
     //ajax
     function _savePosts(){
 
         var categoryId = $('.newpost-category-btn-name').attr('data-key');
-        var postTitle = $('.admin-newpost-title').val();
+        var postTitle = $('.admin-new-post-title').val();
         var postContent = $('.admin-new-post-content').val();
+        var postId =  $('.admin-new-post-title').attr('data-key');
 
         var url = '/admin/new/post';
         var data = {
@@ -62,10 +54,16 @@
             title : postTitle,
             content : postContent
         };
+        if(postId != undefined && postId != ''){
+            data.postId = postId;
+        }
 
         $.post(url,data,function(data){
             console.log('save post success----'+data);
             if(data.returnCode == 1){
+
+                var postId = data.postId;
+                $('.admin-new-post-title').attr('data-key',postId);
 
                 $('.admin-new-post-alert').addClass('alert-success');
                 $('.admin-new-post-alert').css('display','block');
@@ -78,8 +76,9 @@
     function _publishPosts(){
 
         var categoryId = $('.newpost-category-btn-name').attr('data-key');
-        var postTitle = $('.admin-newpost-title').val();
+        var postTitle = $('.admin-new-post-title').val();
         var postContent = $('.admin-new-post-content').val();
+        var postId =  $('.admin-new-post-title').attr('data-key');
 
         var url = '/admin/new/post';
         var data = {
@@ -87,6 +86,9 @@
             title : postTitle,
             content : postContent
         };
+        if(postId != undefined && postId != ''){
+            data.postId = postId;
+        }
 
         $.post(url,data,function(data){
             console.log('save post success----'+data);
@@ -94,9 +96,8 @@
 
                 var postId = data.postId;
 
-                $.admin.container.load('/admin/posts/'+postId,function(data){
-                    console.log(data);
-                    console.log(data.post);
+                $.admin.container.load('/admin/posts/'+postId,function(){
+
                 });
 
             }
@@ -105,7 +106,6 @@
         });
 
     }
-
     _init();
 
 

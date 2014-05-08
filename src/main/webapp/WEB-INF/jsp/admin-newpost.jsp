@@ -7,20 +7,17 @@
     <div class="row">
       <div class="col-lg-10">
         <div class="input-group">
+
             <div class="input-group-btn">
-              <button tabindex="-1" class="btn btn-default newpost-category-btn-name" type="button">Category</button>
-              <button tabindex="-1" data-toggle="dropdown" class="btn btn-default dropdown-toggle newpost-category-btn" type="button">
-                <span class="caret"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-              </button>
-              <ul role="menu" class="dropdown-menu newpost-category-select-menu">
-                <%--<li><a href="#">Java</a></li>--%>
-                <%--<li><a href="#">C++</a></li>--%>
-                <%--<li><a href="#">Python</a></li>--%>
-                <%--<li class="divider"></li>--%>
-                <%--<li><a href="#">Nodejs</a></li>--%>
-              </ul>
+                <button class="btn newpost-category-btn-name">Category</button>
+                <button class="btn dropdown-toggle newpost-category-btn" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu newpost-category-select-menu">
+                    <!-- dropdown menu links -->
+                </ul>
             </div>
+
             <input type="text" class="form-control admin-new-post-title">
         </div><!-- /input-group -->
       </div><!-- /.col-lg-6 -->

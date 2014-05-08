@@ -63,9 +63,5 @@
         </div><!-- /.col-lg-6 -->
     </div><!-- /.row -->
 
-
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- JavaScript -->
-    <script src="/resources/js/modal.js"></script>
   </body>
 </html>

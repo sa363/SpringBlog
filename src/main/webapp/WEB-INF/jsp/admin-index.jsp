@@ -45,11 +45,7 @@
     <!-- JavaScript -->
 
     <script src="/resources/js/bootstrap.js"></script>
-    <script src="/resources/js/modal.js"></script>
-    <script src="/resources/js/alert.js"></script>
     <script src="/resources/js/admin.js"></script>
-    <script src="/resources/js/dropdown.js"></script>
-
 
 </body>
 
