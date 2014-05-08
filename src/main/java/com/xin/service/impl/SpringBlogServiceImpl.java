@@ -25,7 +25,7 @@ public class SpringBlogServiceImpl implements SpringBlogService {
     private UserRepo userRepo;
 
     @Autowired
-    private PostRepo postsRepo;
+    private PostRepo postRepo;
 
 
     @Transactional
@@ -55,14 +55,14 @@ public class SpringBlogServiceImpl implements SpringBlogService {
 
     @Transactional
     @Override
-    public Long savePosts(Post posts) throws DataAccessException {
-        return this.postsRepo.save(posts);
+    public Long savePost(Post posts) throws DataAccessException {
+        return this.postRepo.save(posts);
     }
 
 
     @Transactional(readOnly = true)
     @Override
-    public Post findPostsById(Long id) throws DataAccessException {
-        return this.postsRepo.find(id);
+    public Post findPostById(Long id) throws DataAccessException {
+        return this.postRepo.find(id);
     }
 }

@@ -13,7 +13,7 @@ import java.util.Collection;
 public interface CategoryRepo {
 
 
-    Long save(Category categories) throws DataAccessException;
+    Long save(Category category) throws DataAccessException;
 
     Category find(Long id) throws DataAccessException;
 

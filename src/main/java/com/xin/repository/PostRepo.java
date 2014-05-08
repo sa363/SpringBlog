@@ -12,7 +12,7 @@ import java.util.Collection;
  */
 public interface PostRepo {
 
-    Long save(Post posts) throws DataAccessException;
+    Long save(Post post) throws DataAccessException;
 
     Post find(Long id) throws DataAccessException;
 

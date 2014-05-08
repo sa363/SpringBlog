@@ -12,7 +12,7 @@ import java.util.Collection;
  */
 public interface CommentRepo {
 
-    Long save(Comment comments) throws DataAccessException;
+    Long save(Comment comment) throws DataAccessException;
 
     Comment find(Long id) throws DataAccessException;
 

@@ -16,7 +16,7 @@ import java.util.Collection;
  * Time: 下午3:23
  */
 @Repository
-public class PostsRepoImpl implements PostRepo {
+public class PostRepoImpl implements PostRepo {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -26,14 +26,14 @@ public class PostsRepoImpl implements PostRepo {
     }
 
     @Override
-    public Long save(Post posts) throws DataAccessException {
+    public Long save(Post post) throws DataAccessException {
 
-        Long id = posts.getPostId();
+        Long id = post.getPostId();
 
         if(id == null){
-            id = (Long) this.getCurrentSession().save(posts);
+            id = (Long) this.getCurrentSession().save(post);
         }else {
-            this.getCurrentSession().update(posts);
+            this.getCurrentSession().update(post);
         }
 
         return id;

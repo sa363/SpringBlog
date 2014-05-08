@@ -117,7 +117,7 @@ public class Post {
 
     @javax.persistence.Column(name = "category_id")
     @Basic
-    public Long getCateoryId() {
+    public Long getCategoryId() {
         return categoryId;
     }
 

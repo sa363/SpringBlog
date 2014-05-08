@@ -92,7 +92,7 @@ public class AdminController {
         Map<String,Object> resultMap = new HashMap<String, Object>();
 
         User user = (User) request.getSession().getAttribute("user");
-        Post posts = new Post();
+        Post post = new Post();
         String categoryIdStr = request.getParameter("categoryId");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
@@ -101,22 +101,22 @@ public class AdminController {
             categoryId = Long.parseLong(categoryIdStr);
 
         }
-        posts.setAuthorId(user.getUserId());
+        post.setAuthorId(user.getUserId());
 
         if(categoryId != null){
-            posts.setCategoryId(categoryId);
+            post.setCategoryId(categoryId);
         }
         if(title != null){
-            posts.setPostTitle(title);
+            post.setPostTitle(title);
 
         }
         if(content != null){
-            posts.setPostContent(content);
+            post.setPostContent(content);
         }
-        posts.setPostDate(new Date());
-        posts.setPostModifiedDate(new Date());
+        post.setPostDate(new Date());
+        post.setPostModifiedDate(new Date());
 
-        Long id = this.springBlogService.savePosts(posts);
+        Long id = this.springBlogService.savePost(post);
 
         resultMap.put("postId",id);
         resultMap.put("returnCode", BlogConstant.RETURN_CODE_SUCC);
@@ -125,13 +125,13 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/posts/{postId}",method = RequestMethod.GET)
-    public ModelAndView getPost(@PathVariable Long postId,ModelAndView mav){
+    public ModelAndView getPost(@PathVariable Long postId){
+
         Map<String,Object> model = new HashMap<String, Object>();
-        Post posts = this.springBlogService.findPostsById(postId);
-        model.put("post",posts);
-        mav.addObject(model);
-        mav.setViewName("admin.posts.show");
-        return mav;
+        Post post = this.springBlogService.findPostById(postId);
+        model.put("post",post);
+
+        return new ModelAndView("admin.posts.show",model);
     }
 
 }
