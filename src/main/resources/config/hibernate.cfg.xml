@@ -15,9 +15,9 @@
         <property name="hibernate.cache.use_query_cache">true</property>
 
         <class-cache class="com.xin.model.Hello" usage="read-write"/>
-        <class-cache class="com.xin.model.Categories" usage="read-write"/>
-        <class-cache class="com.xin.model.Comments" usage="read-write"/>
-        <class-cache class="com.xin.model.Posts" usage="read-write"/>
+        <class-cache class="com.xin.model.Category" usage="read-write"/>
+        <class-cache class="com.xin.model.Comment" usage="read-write"/>
+        <class-cache class="com.xin.model.Post" usage="read-write"/>
         <class-cache class="com.xin.model.User" usage="read-write"/>
 
     </session-factory>

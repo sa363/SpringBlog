@@ -10,12 +10,12 @@ import java.util.Date;
  * Time: 下午10:27
  */
 @Entity
-public class Posts {
+public class Post {
 
-    public Posts() {
+    public Post() {
     }
 
-    public Posts(Long postId, Long authorId, Date postDate, String postContent, String postTitle, Integer postStatus, Integer commentStatus, Long postCategory, Date postModified, Integer commentCount) {
+    public Post(Long postId, Long authorId, Date postDate, String postContent, String postTitle, Integer postStatus, Integer commentStatus, Long categoryId, Date postModifiedDate, Integer commentCount) {
         this.postId = postId;
         this.authorId = authorId;
         this.postDate = postDate;
@@ -23,8 +23,8 @@ public class Posts {
         this.postTitle = postTitle;
         this.postStatus = postStatus;
         this.commentStatus = commentStatus;
-        this.postCategory = postCategory;
-        this.postModified = postModified;
+        this.categoryId = categoryId;
+        this.postModifiedDate = postModifiedDate;
         this.commentCount = commentCount;
     }
 
@@ -113,28 +113,28 @@ public class Posts {
         this.commentStatus = commentStatus;
     }
 
-    private Long postCategory;
+    private Long categoryId;
 
-    @javax.persistence.Column(name = "post_category")
+    @javax.persistence.Column(name = "category_id")
     @Basic
-    public Long getPostCategory() {
-        return postCategory;
+    public Long getCateoryId() {
+        return categoryId;
     }
 
-    public void setPostCategory(Long postCategory) {
-        this.postCategory = postCategory;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
-    private Date postModified;
+    private Date postModifiedDate;
 
-    @javax.persistence.Column(name = "post_modified")
+    @javax.persistence.Column(name = "post_modified_date")
     @Basic
-    public Date getPostModified() {
-        return postModified;
+    public Date getPostModifiedDate() {
+        return postModifiedDate;
     }
 
-    public void setPostModified(Date postModified) {
-        this.postModified = postModified;
+    public void setPostModifiedDate(Date postModifiedDate) {
+        this.postModifiedDate = postModifiedDate;
     }
 
     private Integer commentCount;

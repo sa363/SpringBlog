@@ -1,7 +1,7 @@
 package com.xin.repository.impl;
 
-import com.xin.model.Posts;
-import com.xin.repository.PostsRepo;
+import com.xin.model.Post;
+import com.xin.repository.PostRepo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.Collection;
  * Time: 下午3:23
  */
 @Repository
-public class PostsRepoImpl implements PostsRepo {
+public class PostsRepoImpl implements PostRepo {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -26,7 +26,7 @@ public class PostsRepoImpl implements PostsRepo {
     }
 
     @Override
-    public Long save(Posts posts) throws DataAccessException {
+    public Long save(Post posts) throws DataAccessException {
 
         Long id = posts.getPostId();
 
@@ -40,12 +40,12 @@ public class PostsRepoImpl implements PostsRepo {
     }
 
     @Override
-    public Posts find(Long id) throws DataAccessException {
-        return (Posts) this.getCurrentSession().get(Posts.class, id);
+    public Post find(Long id) throws DataAccessException {
+        return (Post) this.getCurrentSession().get(Post.class, id);
     }
 
     @Override
-    public Collection<Posts> findAll() throws DataAccessException {
+    public Collection<Post> findAll() throws DataAccessException {
         return null;
     }
 }

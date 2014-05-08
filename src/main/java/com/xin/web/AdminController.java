@@ -1,7 +1,7 @@
 package com.xin.web;
 
 import com.xin.model.BlogConstant;
-import com.xin.model.Posts;
+import com.xin.model.Post;
 import com.xin.model.User;
 import com.xin.service.SpringBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.HashMap;
@@ -93,7 +92,7 @@ public class AdminController {
         Map<String,Object> resultMap = new HashMap<String, Object>();
 
         User user = (User) request.getSession().getAttribute("user");
-        Posts posts = new Posts();
+        Post posts = new Post();
         String categoryIdStr = request.getParameter("categoryId");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
@@ -105,7 +104,7 @@ public class AdminController {
         posts.setAuthorId(user.getUserId());
 
         if(categoryId != null){
-            posts.setPostCategory(categoryId);
+            posts.setCategoryId(categoryId);
         }
         if(title != null){
             posts.setPostTitle(title);
@@ -115,7 +114,7 @@ public class AdminController {
             posts.setPostContent(content);
         }
         posts.setPostDate(new Date());
-        posts.setPostModified(new Date());
+        posts.setPostModifiedDate(new Date());
 
         Long id = this.springBlogService.savePosts(posts);
 
@@ -128,7 +127,7 @@ public class AdminController {
     @RequestMapping(value = "/posts/{postId}",method = RequestMethod.GET)
     public ModelAndView getPost(@PathVariable Long postId,ModelAndView mav){
         Map<String,Object> model = new HashMap<String, Object>();
-        Posts posts = this.springBlogService.findPostsById(postId);
+        Post posts = this.springBlogService.findPostsById(postId);
         model.put("post",posts);
         mav.addObject(model);
         mav.setViewName("admin.posts.show");

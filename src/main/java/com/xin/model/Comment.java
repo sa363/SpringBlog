@@ -9,12 +9,12 @@ import java.sql.Date;
  * Time: 下午10:27
  */
 @Entity
-public class Comments {
+public class Comment {
 
-    public Comments() {
+    public Comment() {
     }
 
-    public Comments(Long comentId, Long postId, String commentAuthor, String commentAuthorEmail, Date commentDate, String commentContent, Long commentParent, Long userId) {
+    public Comment(Long comentId, Long postId, String commentAuthor, String commentAuthorEmail, Date commentDate, String commentContent, Long commentParent, Long userId) {
         this.comentId = comentId;
         this.postId = postId;
         this.commentAuthor = commentAuthor;

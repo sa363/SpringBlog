@@ -8,12 +8,12 @@ import javax.persistence.*;
  * Time: 下午10:27
  */
 @Entity
-public class Categories {
+public class Category {
 
-    public Categories() {
+    public Category() {
     }
 
-    public Categories(Long catId, String catName, String catDescription, Long catParent) {
+    public Category(Long catId, String catName, String catDescription, Long catParent) {
         this.catId = catId;
         this.catName = catName;
         this.catDescription = catDescription;

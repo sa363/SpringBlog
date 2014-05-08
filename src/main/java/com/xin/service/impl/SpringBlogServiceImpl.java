@@ -1,8 +1,8 @@
 package com.xin.service.impl;
 
-import com.xin.model.Posts;
+import com.xin.model.Post;
 import com.xin.model.User;
-import com.xin.repository.PostsRepo;
+import com.xin.repository.PostRepo;
 import com.xin.repository.UserRepo;
 import com.xin.service.SpringBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class SpringBlogServiceImpl implements SpringBlogService {
     private UserRepo userRepo;
 
     @Autowired
-    private PostsRepo postsRepo;
+    private PostRepo postsRepo;
 
 
     @Transactional
@@ -55,14 +55,14 @@ public class SpringBlogServiceImpl implements SpringBlogService {
 
     @Transactional
     @Override
-    public Long savePosts(Posts posts) throws DataAccessException {
+    public Long savePosts(Post posts) throws DataAccessException {
         return this.postsRepo.save(posts);
     }
 
 
     @Transactional(readOnly = true)
     @Override
-    public Posts findPostsById(Long id) throws DataAccessException {
+    public Post findPostsById(Long id) throws DataAccessException {
         return this.postsRepo.find(id);
     }
 }
