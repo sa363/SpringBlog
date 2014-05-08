@@ -1808,9 +1808,9 @@ TableComment 0 新宋体,8,N</a:FontList>
 <a:Code>post_date</a:Code>
 <a:CreationDate>1399210814</a:CreationDate>
 <a:Creator>Administrator</a:Creator>
-<a:ModificationDate>1399210814</a:ModificationDate>
+<a:ModificationDate>1399558566</a:ModificationDate>
 <a:Modifier>Administrator</a:Modifier>
-<a:DataType>date</a:DataType>
+<a:DataType>datetime</a:DataType>
 </o:Column>
 <o:Column Id="o33">
 <a:ObjectID>73FABD64-306F-4771-84DE-E87BB76352CC</a:ObjectID>
@@ -1878,9 +1878,9 @@ TableComment 0 新宋体,8,N</a:FontList>
 <a:Code>post_modified_date</a:Code>
 <a:CreationDate>1399211149</a:CreationDate>
 <a:Creator>Administrator</a:Creator>
-<a:ModificationDate>1399539301</a:ModificationDate>
-<a:Modifier>Dell</a:Modifier>
-<a:DataType>date</a:DataType>
+<a:ModificationDate>1399558566</a:ModificationDate>
+<a:Modifier>Administrator</a:Modifier>
+<a:DataType>datetime</a:DataType>
 </o:Column>
 <o:Column Id="o39">
 <a:ObjectID>57D08F43-7C4D-49EE-AF97-F014DBB020A8</a:ObjectID>
