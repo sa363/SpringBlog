@@ -45,13 +45,14 @@ public class AdminController {
         if(user != null){
             if(user.getPassword().equals(password.trim())){
                 mav.addObject("user",user);
-                mav.setViewName("admin.index");
+                mav.setView(new RedirectView("admin/index"));
             }
 
             return mav;
         }
         return mav;
     }
+
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public ModelAndView indexHandler(HttpServletRequest request,ModelAndView mav){
 
@@ -64,6 +65,10 @@ public class AdminController {
             mav.setViewName("admin.index");
         }
         return mav;
+    }
+    @RequestMapping(value = "/home",method = RequestMethod.GET)
+    public ModelAndView homeHandler(){
+        return new ModelAndView("admin.home");
     }
     @RequestMapping(value = "/new",method = RequestMethod.GET)
     public ModelAndView newHandler(){

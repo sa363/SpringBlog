@@ -4,30 +4,30 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
+    <definition name="blank.template" template="/WEB-INF/jsp/blank.jsp">
+    </definition>
     <definition name="admin.login" template="/WEB-INF/jsp/login.jsp">
     </definition>
 
 
-    <definition name="admin.basic" template="/WEB-INF/jsp/admin-basic.jsp">
+
+
+    <definition name="admin.index" template="/WEB-INF/jsp/admin-index.jsp">
         <put-attribute name="header" value="/WEB-INF/jsp/blog-header.jsp" />
         <put-attribute name="menu" value="/WEB-INF/jsp/admin-menu.jsp" />
-        <put-attribute name="body" value="" />
     </definition>
 
-    <definition name="admin.index" extends="admin.basic">
-        <put-attribute name="body" value="/WEB-INF/jsp/admin-welcome.jsp" />
+    <definition name="admin.home" extends="blank.template">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin-welcome.jsp" />
     </definition>
-    <definition name="admin.new" extends="admin.basic">
-        <put-attribute name="body" value="/WEB-INF/jsp/admin-newpost.jsp" />
+    <definition name="admin.new" extends="blank.template">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin-newpost.jsp" />
     </definition>
-    <definition name="admin.posts" extends="admin.basic">
-        <put-attribute name="body" value="/WEB-INF/jsp/admin-posts.jsp" />
+    <definition name="admin.posts" template="/WEB-INF/jsp/admin-posts.jsp">
     </definition>
-    <definition name="admin.categories" extends="admin.basic">
-        <put-attribute name="body" value="/WEB-INF/jsp/admin-categories.jsp" />
+    <definition name="admin.categories" template="/WEB-INF/jsp/admin-categories.jsp">
     </definition>
-    <definition name="admin.comments" extends="admin.basic">
-        <put-attribute name="body" value="/WEB-INF/jsp/admin-comments.jsp" />
+    <definition name="admin.comments" template="/WEB-INF/jsp/admin-comments.jsp">
     </definition>
 
 
