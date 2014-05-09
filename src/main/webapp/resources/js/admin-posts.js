@@ -1,4 +1,16 @@
 (function($) {
+
+    var table = $('.admin-posts-table');
+    var tbody = table.find('tbody');
+
+    var readBtn = $('.admin-posts-read');
+    var editBtn = $('.admin-posts-edit');
+    var deleteBtn = $('.admin-posts-delete');
+    var closeCommentsBtn = $('.admin-posts-close-comments');
+
+
+
+
     function _init(){
         _initEvent();
         refreshBtnGroup();
@@ -6,15 +18,19 @@
     }
 
     function _initEvent(){
-        var table = $('.admin-posts-table');
-        var tbody = table.find('tbody');
+
 
         $('tr',tbody).each(function(){
 
             $(this).on('click',function(){
-                console.log('tr click--'+$('tbody input[tpye=check]:checked','.admin-posts-table').length);
                 refreshBtnGroup();
             });
+
+        });
+
+        readBtn.on('click',function(){
+
+            _readPost();
 
         });
 
@@ -22,12 +38,10 @@
     }
 
     function refreshBtnGroup(){
+
        var checkArr =  $('tbody input[type=checkbox]:checked','.admin-posts-table');
        var count = checkArr.length;
-       var readBtn = $('.admin-posts-read');
-       var editBtn = $('.admin-posts-edit');
-       var deleteBtn = $('.admin-posts-delete');
-       var closeCommentsBtn = $('.admin-posts-close-comments');
+
         console.log('refresh----'+count);
 
        switch (count){
@@ -37,12 +51,14 @@
                deleteBtn.attr('disabled','disabled');
                closeCommentsBtn.attr('disabled','disabled');
                break;
+
            case 1:
                readBtn.removeAttr('disabled');
                editBtn.removeAttr('disabled');
                deleteBtn.removeAttr('disabled');
                closeCommentsBtn.removeAttr('disabled');
                break;
+
            default:
 
                readBtn.removeAttr('disabled');
@@ -52,6 +68,24 @@
                closeCommentsBtn.attr('disabled','disabled');
 
        }
+    }
+
+
+    //ajax
+
+    function _readPost(){
+
+        var selection =$('tbody input[type=checkbox]:checked','.admin-posts-table');
+
+//        var postId = selection.parent().parent().parent().parent().attr('data-key');
+        var postId = selection.parents('tr').attr('data-key');
+
+        console.log(postId);
+
+        $.admin.container.load('/admin/posts/'+postId,function(){
+
+        });
+
     }
 
 
