@@ -48,7 +48,7 @@
         var postContent = $('.admin-new-post-content').val();
         var postId =  $('.admin-new-post-title').attr('data-key');
 
-        var url = '/admin/new/post';
+        var url = '/admin/post';
         var data = {
             categoryId : categoryId,
             title : postTitle,
@@ -80,7 +80,7 @@
         var postContent = $('.admin-new-post-content').val();
         var postId =  $('.admin-new-post-title').attr('data-key');
 
-        var url = '/admin/new/post';
+        var url = '/admin/post';
         var data = {
             categoryId : categoryId,
             title : postTitle,

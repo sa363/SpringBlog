@@ -65,4 +65,11 @@ public class SpringBlogServiceImpl implements SpringBlogService {
     public Post findPostById(Long id) throws DataAccessException {
         return this.postRepo.find(id);
     }
+
+
+    @Transactional(readOnly = true)
+    @Override
+    public Collection<Post> findAllPost() throws DataAccessException {
+        return this.postRepo.findAll();
+    }
 }

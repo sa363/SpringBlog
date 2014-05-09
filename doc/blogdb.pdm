@@ -2047,9 +2047,9 @@ TableComment 0 新宋体,8,N</a:FontList>
 <a:Code>comment_date</a:Code>
 <a:CreationDate>1399211727</a:CreationDate>
 <a:Creator>Administrator</a:Creator>
-<a:ModificationDate>1399212208</a:ModificationDate>
-<a:Modifier>Administrator</a:Modifier>
-<a:DataType>date</a:DataType>
+<a:ModificationDate>1399600561</a:ModificationDate>
+<a:Modifier>Dell</a:Modifier>
+<a:DataType>datetime</a:DataType>
 </o:Column>
 <o:Column Id="o51">
 <a:ObjectID>3DDE74C6-796E-48F9-ACC2-65701398CF00</a:ObjectID>

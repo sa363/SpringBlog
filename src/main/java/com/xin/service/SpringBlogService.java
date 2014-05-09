@@ -25,4 +25,6 @@ public interface SpringBlogService {
     Long savePost(Post post) throws DataAccessException;
 
     Post findPostById(Long id) throws DataAccessException;
+
+    Collection<Post> findAllPost() throws DataAccessException;
 }

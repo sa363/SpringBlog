@@ -2,6 +2,7 @@ package com.xin.repository.impl;
 
 import com.xin.model.Post;
 import com.xin.repository.PostRepo;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,9 @@ public class PostRepoImpl implements PostRepo {
 
     @Override
     public Collection<Post> findAll() throws DataAccessException {
-        return null;
+
+        Query query =  this.sessionFactory.getCurrentSession().createQuery("from Post");
+
+        return  query.list();
     }
 }

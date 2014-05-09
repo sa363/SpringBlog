@@ -9,12 +9,13 @@
         <div class="input-group">
 
             <div class="input-group-btn">
-                <button class="btn newpost-category-btn-name">Category</button>
-                <button class="btn dropdown-toggle newpost-category-btn" data-toggle="dropdown">
+                <button type="button" class="btn btn-default newpost-category-btn-name">Category</button>
+                <button type="button" class="btn btn-default dropdown-toggle newpost-category-btn" data-toggle="dropdown">
                     <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
                 </button>
-                <ul class="dropdown-menu newpost-category-select-menu">
-                    <!-- dropdown menu links -->
+                <ul class="dropdown-menu newpost-category-select-menu" role="menu">
+
                 </ul>
             </div>
 

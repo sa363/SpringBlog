@@ -101,10 +101,6 @@ body {
 	border: 1px solid #CCCCCC;
     border-radius: 4px;
 }
-.new-post-btn-group{
-	margin-top:18px;
-	display : block;
-}
 
 /********admin-newpost************/
 .admin-new-post-alert{

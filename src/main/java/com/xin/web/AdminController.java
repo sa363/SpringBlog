@@ -76,7 +76,12 @@ public class AdminController {
     }
     @RequestMapping(value = "/posts",method = RequestMethod.GET)
     public ModelAndView postsHandler(){
-        return new ModelAndView("admin.posts");
+
+        Map<String, Object> model = new HashMap<String, Object>();
+
+        model.put("posts",this.springBlogService.findAllPost());
+
+        return new ModelAndView("admin.posts",model);
     }
     @RequestMapping(value = "/categories",method = RequestMethod.GET)
     public ModelAndView categoriesHandler(){
@@ -87,8 +92,8 @@ public class AdminController {
         return new ModelAndView("admin.comments");
     }
 
-    @RequestMapping(value = "/new/post",method = RequestMethod.POST)
-    public @ResponseBody Map<String,Object> savePosts(HttpServletRequest request){
+    @RequestMapping(value = "/post",method = RequestMethod.POST)
+    public @ResponseBody Map<String,Object> savePost(HttpServletRequest request){
 
         Map<String,Object> resultMap = new HashMap<String, Object>();
 
