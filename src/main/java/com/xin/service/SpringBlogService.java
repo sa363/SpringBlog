@@ -5,6 +5,7 @@ import com.xin.model.User;
 import org.springframework.dao.DataAccessException;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Author: Xin
@@ -27,4 +28,8 @@ public interface SpringBlogService {
     Post findPostById(Long id) throws DataAccessException;
 
     Collection<Post> findAllPost() throws DataAccessException;
+
+    void deleteAllPost() throws DataAccessException;
+
+    void deletePost(Long id) throws DataAccessException;
 }

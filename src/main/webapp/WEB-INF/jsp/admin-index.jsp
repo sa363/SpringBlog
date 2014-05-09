@@ -45,6 +45,7 @@
     <!-- JavaScript -->
 
     <script src="/resources/js/bootstrap.js"></script>
+    <script src="/resources/js/json.min.js"></script>
     <script src="/resources/js/admin.js"></script>
 
 </body>

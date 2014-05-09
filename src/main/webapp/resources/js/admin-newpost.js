@@ -1,4 +1,10 @@
 (function($) {
+
+    var POST_STATUS_DRAFT = 0;
+    var POST_STATUS_PUBLISH = 1;
+    var POST_STATUS_PRIVATE = 2;
+
+
     function _init(){
         _initCategorySelectMenu();
         _initEvent();
@@ -52,7 +58,8 @@
         var data = {
             categoryId : categoryId,
             title : postTitle,
-            content : postContent
+            content : postContent,
+            postStatus : POST_STATUS_DRAFT
         };
         if(postId != undefined && postId != ''){
             data.postId = postId;
@@ -80,11 +87,13 @@
         var postContent = $('.admin-new-post-content').val();
         var postId =  $('.admin-new-post-title').attr('data-key');
 
+
         var url = '/admin/post';
         var data = {
             categoryId : categoryId,
             title : postTitle,
-            content : postContent
+            content : postContent,
+            postStatus : POST_STATUS_PUBLISH
         };
         if(postId != undefined && postId != ''){
             data.postId = postId;

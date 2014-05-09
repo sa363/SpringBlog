@@ -52,4 +52,12 @@ public class PostRepoImpl implements PostRepo {
 
         return  query.list();
     }
+
+    @Override
+    public void delete(Long id) throws DataAccessException {
+
+        Query query =  this.sessionFactory.getCurrentSession().createQuery("delete Post where postId=?");
+        query.setLong(0,id);
+        query.executeUpdate();
+    }
 }

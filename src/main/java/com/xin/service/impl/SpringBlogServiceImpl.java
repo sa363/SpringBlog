@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Author: Xin
@@ -71,5 +73,17 @@ public class SpringBlogServiceImpl implements SpringBlogService {
     @Override
     public Collection<Post> findAllPost() throws DataAccessException {
         return this.postRepo.findAll();
+    }
+
+    @Transactional
+    @Override
+    public void deleteAllPost() throws DataAccessException {
+
+    }
+
+    @Transactional
+    @Override
+    public void deletePost(Long id) throws DataAccessException {
+        this.postRepo.delete(id);
     }
 }

@@ -17,6 +17,12 @@ This is a tiny blog system based on SpringMVC and Hibernate,just for learning sp
 2. Database design
 3. Integrate tiles
 4. Admin login and publish post
+4. Manage posts
+
+##Problem
+
+1. Session out of time,how to save information of login user?
+2. How to design restful api for delete many objects?
 
 
 

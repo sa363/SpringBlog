@@ -6,16 +6,16 @@ import com.xin.model.User;
 import com.xin.service.SpringBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -99,16 +99,19 @@ public class AdminController {
 
         User user = (User) request.getSession().getAttribute("user");
         Post post = new Post();
+        post.setCommentStatus(BlogConstant.POST_COMMETNS_STATUS_OPEN);
         String categoryIdStr = request.getParameter("categoryId");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
         String postIdStr = request.getParameter("postId");
-
+        String postStatusStr = request.getParameter("postStatus");
+        String commentStatusStr = request.getParameter("commentStatus");
 
         if(postIdStr != null && !postIdStr.equals("")){
             Long postId = Long.parseLong(postIdStr);
             if(postId != null){
                 post.setPostId(postId);
+
             }
         }
 
@@ -128,6 +131,12 @@ public class AdminController {
         }
         if(content != null){
             post.setPostContent(content);
+        }
+        if(postStatusStr != null && !postStatusStr.equals("")){
+            post.setPostStatus(Integer.parseInt(postStatusStr));
+        }
+        if(commentStatusStr != null && !commentStatusStr.equals("")){
+            post.setCommentStatus(Integer.parseInt(commentStatusStr));
         }
         post.setPostDate(new Date());
         post.setPostModifiedDate(new Date());
@@ -157,5 +166,27 @@ public class AdminController {
 
         return new ModelAndView("admin.posts.show",model);
     }
+
+    @RequestMapping(value = "/post/{postId}",method = RequestMethod.DELETE)
+    public @ResponseBody void deletePost(@PathVariable Long postId, HttpServletResponse response){
+
+        this.springBlogService.deletePost(postId);
+        response.setStatus(HttpServletResponse.SC_OK);
+    }
+
+    @RequestMapping(value = "/post/{postId}",method = RequestMethod.PUT)
+    public @ResponseBody void updatePost(@PathVariable Long postId, @RequestBody MultiValueMap<String, String> body, HttpServletResponse response){
+
+        Post post = this.springBlogService.findPostById(postId);
+        Map<String, String> params = body.toSingleValueMap();
+
+        String commentStatusStr = params.get("commentStatus");
+
+        if(commentStatusStr != null && !commentStatusStr.equals("")){
+            post.setCommentStatus(Integer.parseInt(commentStatusStr));
+        }
+    }
+
+
 
 }

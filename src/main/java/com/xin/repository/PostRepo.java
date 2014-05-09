@@ -17,4 +17,7 @@ public interface PostRepo {
     Post find(Long id) throws DataAccessException;
 
     Collection<Post> findAll() throws DataAccessException;
+
+    void delete(Long id) throws DataAccessException;
+
 }
