@@ -31,7 +31,10 @@
                     </c:if>
                 </tbody>
             </table>
-
+            <div class="alert admin-posts-alert">
+                <strong class="admin-posts-alert-msg">Well done!</strong>
+                <span class="admin-posts-alert-msg-notice"></span>
+            </div>
             <div class="btn-group new-post-btn-group">
                 <button type="button" class="btn btn-default admin-posts-read">Read</button>
                 <button type="button" class="btn btn-default admin-posts-edit">Edit</button>

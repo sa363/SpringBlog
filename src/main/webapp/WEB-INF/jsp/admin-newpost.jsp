@@ -29,8 +29,8 @@
             <textarea class="admin-new-post-content " >
             </textarea>
             <div class="alert admin-new-post-alert">
-                <strong class="new-post-alert-msg-one">Well done!</strong>
-                <span class="new-post-alert-msg-one">You successfully save this post.</span>
+                <strong class="new-post-alert-msg">Well done!</strong>
+                <span class="new-post-alert-msg-notice">You successfully save this post.</span>
             </div>
             <div class="btn-group new-post-btn-group">
                 <button type="button" class="btn btn-default new-post-cancel-btn">Cancel</button>

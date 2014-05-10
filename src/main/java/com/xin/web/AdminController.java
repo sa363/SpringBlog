@@ -168,14 +168,37 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/post/{postId}",method = RequestMethod.DELETE)
-    public @ResponseBody void deletePost(@PathVariable Long postId, HttpServletResponse response){
+    public @ResponseBody Map<String,Object>  deletePost(@PathVariable Long postId){
+
+        Map<String, Object> resultMap = new HashMap<String, Object>();
 
         this.springBlogService.deletePost(postId);
-        response.setStatus(HttpServletResponse.SC_OK);
+        resultMap.put("returnCode", BlogConstant.RETURN_CODE_SUCC);
+
+        return resultMap;
+
     }
 
+    @RequestMapping(value = "/posts",method = RequestMethod.DELETE)
+    public @ResponseBody void batchDeletePost(@RequestBody MultiValueMap<String, String> body){
+
+
+        Map<String, String> params = body.toSingleValueMap();
+        String idsStr = params.get("ids");
+        String[] idsArr = idsStr.split(",");
+
+        List<Long> ids = new ArrayList<Long>();
+        for(int i = 0; i < idsArr.length; i++){
+            ids.add(Long.parseLong(idsArr[i]));
+        }
+
+    }
+
+
     @RequestMapping(value = "/post/{postId}",method = RequestMethod.PUT)
-    public @ResponseBody void updatePost(@PathVariable Long postId, @RequestBody MultiValueMap<String, String> body, HttpServletResponse response){
+    public @ResponseBody Map<String,Object>  updatePost(@PathVariable Long postId, @RequestBody MultiValueMap<String, String> body, HttpServletResponse response){
+
+        Map<String, Object> resultMap = new HashMap<String, Object>();
 
         Post post = this.springBlogService.findPostById(postId);
         Map<String, String> params = body.toSingleValueMap();
@@ -185,6 +208,12 @@ public class AdminController {
         if(commentStatusStr != null && !commentStatusStr.equals("")){
             post.setCommentStatus(Integer.parseInt(commentStatusStr));
         }
+
+        this.springBlogService.savePost(post);
+
+        resultMap.put("returnCode", BlogConstant.RETURN_CODE_SUCC);
+
+        return resultMap;
     }
 
 

@@ -148,8 +148,7 @@
         var postId = selection.parents('tr').attr('data-key');
 
         $.delete('/admin/post/'+postId,null,function(response,textStatus){
-            console.log(response);
-            console.log(textStatus);
+
             $.admin.container.load('/admin/posts');
         });
 
@@ -168,13 +167,26 @@
         var url = '/admin/post/'+postId;
         $.put(url,data,function(data){
 
-            console.log('_changeCommentStatus success----'+data);
+            if(data.returnCode == 1){
+
+                if(commentStatus == COMMETNS_STAUTS_CLOSE){
+
+                    $('.admin-posts-alert-msg-notice').html('You successfully close comments of the post.')
+
+                }else{
+
+                    $('.admin-posts-alert-msg-notice').html('You successfully open comments of the post.')
+
+                }
+                $('.admin-posts-alert').addClass('alert-success');
+                $('.admin-posts-alert').css('display','block');
+
+
+            }
 
         });
 
-
     }
-
 
 
     _init();

@@ -108,4 +108,9 @@ body {
     margin-top: 18px;
 
 }
+/************admin-posts*********************/
+.admin-posts-alert{
+    display: none;
+    margin-top: 18px;
+}
 
