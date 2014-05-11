@@ -54,7 +54,7 @@ public class CommentReoImpl implements CommentRepo{
 
     @Override
     public void delete(Long id) throws DataAccessException {
-        Query query =  this.getCurrentSession().createQuery("delete Comment where catId=?");
+        Query query =  this.getCurrentSession().createQuery("delete Comment where commentId=?");
         query.setLong(0,id);
         query.executeUpdate();
     }

@@ -1,9 +1,6 @@
 package com.xin.web;
 
-import com.xin.model.BlogConstant;
-import com.xin.model.Category;
-import com.xin.model.Post;
-import com.xin.model.User;
+import com.xin.model.*;
 import com.xin.service.SpringBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,14 +64,17 @@ public class AdminController {
         }
         return mav;
     }
+
     @RequestMapping(value = "/home",method = RequestMethod.GET)
     public ModelAndView homeHandler(){
         return new ModelAndView("admin.home");
     }
+
     @RequestMapping(value = "/new",method = RequestMethod.GET)
     public ModelAndView newHandler(){
         return new ModelAndView("admin.new");
     }
+
     @RequestMapping(value = "/posts",method = RequestMethod.GET)
     public ModelAndView postsHandler(){
 
@@ -84,6 +84,7 @@ public class AdminController {
 
         return new ModelAndView("admin.posts",model);
     }
+
     @RequestMapping(value = "/categories",method = RequestMethod.GET)
     public ModelAndView categoriesHandler(){
 
@@ -92,9 +93,14 @@ public class AdminController {
 
         return new ModelAndView("admin.categories",model);
     }
+
     @RequestMapping(value = "/comments",method = RequestMethod.GET)
     public ModelAndView commentsHandler(){
-        return new ModelAndView("admin.comments");
+
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("comments",this.springBlogService.findAllComment());
+
+        return new ModelAndView("admin.comments",model);
     }
 
     @RequestMapping(value = "/post",method = RequestMethod.POST)
@@ -270,6 +276,45 @@ public class AdminController {
         this.springBlogService.deleteCategory(categoryId);
 
         return resultMap;
+    }
+
+
+    @RequestMapping(value = "/comment/{commentId}", method = RequestMethod.GET)
+    public @ResponseBody Map<String,Object> findComment(@PathVariable Long commentId){
+
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Comment comment = this.springBlogService.findCommentById(commentId);
+        resultMap.put("comment",comment);
+        return resultMap;
+
+    }
+
+    @RequestMapping(value = "/comment/{commentId}", method = RequestMethod.PUT)
+    public @ResponseBody Map<String,Object> updateComment(@PathVariable Long commentId, @RequestBody MultiValueMap<String,String> body){
+
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+
+        Map<String, String> params = body.toSingleValueMap();
+
+        String commentContent = params.get("commentContent");
+
+        Comment comment = this.springBlogService.findCommentById(commentId);
+        comment.setCommentContent(commentContent);
+
+        this.springBlogService.saveComment(comment);
+
+        return resultMap;
+
+    }
+
+    @RequestMapping(value = "/comment/{commentId}", method = RequestMethod.DELETE)
+    public @ResponseBody Map<String,Object> deleteComment(@PathVariable Long commentId){
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+
+        this.springBlogService.deleteComment(commentId);
+
+        return resultMap;
+
     }
 
 
