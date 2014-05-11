@@ -262,6 +262,17 @@ public class AdminController {
     }
 
 
+    @RequestMapping(value = "/category/{categoryId}",method = RequestMethod.DELETE)
+    public @ResponseBody Map<String , Object> deleteCategory(@PathVariable Long categoryId){
+
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+
+        this.springBlogService.deleteCategory(categoryId);
+
+        return resultMap;
+    }
+
+
 
 
 }

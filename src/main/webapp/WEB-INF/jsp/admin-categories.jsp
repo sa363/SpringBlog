@@ -31,7 +31,7 @@
                 </c:if>
                 </tbody>
             </table>
-            <div class="alert admin-posts-alert">
+            <div class="alert admin-categories-alert">
                 <strong class="admin-categories-alert-msg">Well done!</strong>
                 <span class="admin-categories-alert-msg-notice"></span>
             </div>

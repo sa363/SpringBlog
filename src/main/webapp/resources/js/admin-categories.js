@@ -36,6 +36,10 @@
             _updateCategory();
         });
 
+        deleteBtn.on('click',function(){
+           _deleteCategory();
+        });
+
     }
 
 
@@ -91,6 +95,21 @@
             $.admin.container.load('/admin/categories');
 
         });
+    }
+
+
+    function _deleteCategory(){
+
+        var selection = $('tbody input[type=checkbox]:checked','.admin-categories-table');
+
+        var categoryId = selection.parents('tr').attr('data-key');
+
+        $.delete('/admin/category/'+categoryId,null,function(data){
+
+            $.admin.container.load('/admin/categories');
+
+        });
+
     }
 
 
