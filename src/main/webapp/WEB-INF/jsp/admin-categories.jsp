@@ -1,4 +1,5 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,39 +10,40 @@
 
     <div class="row">
         <div class="col-lg-10">
-            <h2>All Category</h2>
-            <div class = "admin-posts-all-posts">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="">
-                        <h4>The most popular front-end framework for developing responsive, mobile first projects on the web.The most popular front-end framework for developing responsive, mobile first projects on the web.
-                        </h4>
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="">
-                        <h4>Option one is this and that&mdash;be sure to include why it's great
-                        </h4>
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="">
-                        <h4>Option one is this and that&mdash;be sure to include why it's great
-                        </h4>
-                    </label>
-                </div>
+            <h2>All Categories</h2>
+
+            <table class="table table-hover admin-categories-table">
+                <tbody>
+                <c:if test="${categories != null}">
+
+                    <c:forEach items="${categories}" var="item">
+                        <tr data-key="${item.catId}">
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="">
+                                        <h4>${item.catName}</h4>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </c:if>
+                </tbody>
+            </table>
+            <div class="alert admin-posts-alert">
+                <strong class="admin-categories-alert-msg">Well done!</strong>
+                <span class="admin-categories-alert-msg-notice"></span>
             </div>
+
             <div class="btn-group new-post-btn-group">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">create</button>
-                <button type="button" class="btn btn-default">Read</button>
-                <button type="button" class="btn btn-default">Edit</button>
-                <button type="button" class="btn btn-default">Delete</button>
+                <button type="button" class="btn btn-default admin-categories-create">Create</button>
+                <button type="button" class="btn btn-default admin-categories-edit">Edit</button>
+                <button type="button" class="btn btn-default admin-categories-delete">Delete</button>
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="createCategoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -49,11 +51,13 @@
                     <h4 class="modal-title" id="myModalLabel">Create new category</h4>
                   </div>
                   <div class="modal-body">
-                        <input type="text" class="form-control" placeholder="Category Name">
+                        <h5>Category Name</h5>
+                        <input type="text" class="form-control category-name" placeholder="Category Name">
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary save-category-btn">Save</button>
                   </div>
                 </div><!-- /.modal-content -->
               </div><!-- /.modal-dialog -->
@@ -63,5 +67,7 @@
         </div><!-- /.col-lg-6 -->
     </div><!-- /.row -->
 
+
+    <script src="/resources/js/admin-categories.js"></script>
   </body>
 </html>

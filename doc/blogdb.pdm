@@ -1999,11 +1999,11 @@ TableComment 0 新宋体,8,N</a:FontList>
 <c:Columns>
 <o:Column Id="o46">
 <a:ObjectID>3E5059DC-9EF4-47D3-924C-39DE78FFFB2A</a:ObjectID>
-<a:Name>coment_id</a:Name>
-<a:Code>coment_id</a:Code>
+<a:Name>comment_id</a:Name>
+<a:Code>comment_id</a:Code>
 <a:CreationDate>1399211512</a:CreationDate>
 <a:Creator>Administrator</a:Creator>
-<a:ModificationDate>1399211513</a:ModificationDate>
+<a:ModificationDate>1399684770</a:ModificationDate>
 <a:Modifier>Administrator</a:Modifier>
 <a:DataType>bigint(20)</a:DataType>
 <a:Length>20</a:Length>

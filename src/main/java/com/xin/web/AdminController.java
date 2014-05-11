@@ -1,6 +1,7 @@
 package com.xin.web;
 
 import com.xin.model.BlogConstant;
+import com.xin.model.Category;
 import com.xin.model.Post;
 import com.xin.model.User;
 import com.xin.service.SpringBlogService;
@@ -85,7 +86,11 @@ public class AdminController {
     }
     @RequestMapping(value = "/categories",method = RequestMethod.GET)
     public ModelAndView categoriesHandler(){
-        return new ModelAndView("admin.categories");
+
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("categories",this.springBlogService.findAllCategory());
+
+        return new ModelAndView("admin.categories",model);
     }
     @RequestMapping(value = "/comments",method = RequestMethod.GET)
     public ModelAndView commentsHandler(){
@@ -212,6 +217,18 @@ public class AdminController {
         this.springBlogService.savePost(post);
 
         resultMap.put("returnCode", BlogConstant.RETURN_CODE_SUCC);
+
+        return resultMap;
+    }
+
+    @RequestMapping(value = "/category",method = RequestMethod.POST)
+    public @ResponseBody Map<String , Object> saveCategory(@RequestParam String categoryName){
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+
+        Category category = new Category();
+        category.setCatName(categoryName);
+
+        this.springBlogService.saveCategory(category);
 
         return resultMap;
     }

@@ -113,4 +113,9 @@ body {
     display: none;
     margin-top: 18px;
 }
+/************admin-categories************************************/
+.admin-posts-alert{
+    display: none;
+    margin-top: 18px;
+}
 

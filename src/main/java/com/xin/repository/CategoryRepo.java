@@ -19,4 +19,6 @@ public interface CategoryRepo {
 
     Collection<Category> findAll() throws DataAccessException;
 
+    void delete(Long id) throws DataAccessException;
+
 }

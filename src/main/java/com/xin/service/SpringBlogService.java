@@ -1,5 +1,7 @@
 package com.xin.service;
 
+import com.xin.model.Category;
+import com.xin.model.Comment;
 import com.xin.model.Post;
 import com.xin.model.User;
 import org.springframework.dao.DataAccessException;
@@ -23,6 +25,7 @@ public interface SpringBlogService {
 
     Collection<User> findAllUser() throws DataAccessException;
 
+
     Long savePost(Post post) throws DataAccessException;
 
     Post findPostById(Long id) throws DataAccessException;
@@ -32,4 +35,24 @@ public interface SpringBlogService {
     void deleteAllPost() throws DataAccessException;
 
     void deletePost(Long id) throws DataAccessException;
+
+
+
+    Long saveCategory(Category category) throws  DataAccessException;
+
+    Category findCategoryById(Long id) throws  DataAccessException;
+
+    Collection<Category> findAllCategory() throws DataAccessException;
+
+    void deleteCategory(Long id) throws DataAccessException;
+
+
+    Long saveComment(Comment comment) throws DataAccessException;
+
+    Comment findCommentById(Long id) throws DataAccessException;
+
+    Collection<Comment> findAllComment() throws DataAccessException;
+
+    void deleteComment(Long id) throws DataAccessException;
+
 }

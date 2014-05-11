@@ -14,8 +14,8 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(Long comentId, Long postId, String commentAuthor, String commentAuthorEmail, Date commentDate, String commentContent, Long commentParent, Long userId) {
-        this.comentId = comentId;
+    public Comment(Long commentId, Long postId, String commentAuthor, String commentAuthorEmail, Date commentDate, String commentContent, Long commentParent, Long userId) {
+        this.commentId = commentId;
         this.postId = postId;
         this.commentAuthor = commentAuthor;
         this.commentAuthorEmail = commentAuthorEmail;
@@ -25,17 +25,17 @@ public class Comment {
         this.userId = userId;
     }
 
-    private Long comentId;
+    private Long commentId;
 
-    @javax.persistence.Column(name = "coment_id")
+    @javax.persistence.Column(name = "comment_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long getComentId() {
-        return comentId;
+    public Long getCommentId() {
+        return commentId;
     }
 
-    public void setComentId(Long comentId) {
-        this.comentId = comentId;
+    public void setCommentId(Long commentId) {
+        this.commentId = commentId;
     }
 
     private Long postId;
