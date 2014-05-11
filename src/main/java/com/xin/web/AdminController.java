@@ -233,6 +233,35 @@ public class AdminController {
         return resultMap;
     }
 
+    @RequestMapping(value = "/category/{categoryId}",method = RequestMethod.GET)
+    public @ResponseBody Map<String, Object> findCategory(@PathVariable Long categoryId){
+
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        Category category = this.springBlogService.findCategoryById(categoryId);
+        resultMap.put("category",category);
+
+        return resultMap;
+
+    }
+
+    @RequestMapping(value = "/category/{categoryId}",method = RequestMethod.PUT)
+    public @ResponseBody Map<String , Object> saveCategory(@PathVariable Long categoryId, @RequestBody MultiValueMap<String, String> body){
+
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+
+        Category category = new Category();
+        category.setCatId(categoryId);
+
+        Map<String, String> params = body.toSingleValueMap();
+        String categoryName = params.get("categoryName");
+        category.setCatName(categoryName);
+
+        this.springBlogService.saveCategory(category);
+
+        return resultMap;
+    }
+
+
 
 
 }

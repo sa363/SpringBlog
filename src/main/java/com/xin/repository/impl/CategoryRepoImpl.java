@@ -28,7 +28,14 @@ public class CategoryRepoImpl implements CategoryRepo {
 
     @Override
     public Long save(Category category) throws DataAccessException {
-        return (Long) this.getCurrentSession().save(category);
+
+        Long id = category.getCatId();
+        if(id == null){
+            id = (Long) this.getCurrentSession().save(category);
+        }else {
+            this.getCurrentSession().update(category);
+        }
+        return id;
     }
 
     @Override

@@ -30,7 +30,13 @@ public class CommentReoImpl implements CommentRepo{
 
     @Override
     public Long save(Comment comment) throws DataAccessException {
-        return (Long) this.getCurrentSession().save(comment);
+        Long id = comment.getCommentId();
+        if(id == null){
+            id = (Long) this.getCurrentSession().save(comment);
+        }else{
+            this.getCurrentSession().update(comment);
+        }
+        return id;
     }
 
     @Override
