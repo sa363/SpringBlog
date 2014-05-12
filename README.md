@@ -10,6 +10,7 @@ This is a tiny blog system based on SpringMVC and Hibernate,just for learning sp
 4. Ehcache for second level cache
 5. Tiles3
 6. Boostrap for front page
+7. bootstrap3-wysihtml5
 
 ##Finish:
 
@@ -17,7 +18,10 @@ This is a tiny blog system based on SpringMVC and Hibernate,just for learning sp
 2. Database design
 3. Integrate tiles
 4. Admin login and publish post
-4. Manage posts
+5. Manage posts
+6. Manage comments
+7. Blog show
+8. Add [bootstrap3-wysihtml5](https://github.com/schnawel007/bootstrap3-wysihtml5) which supports boostrap3
 
 ##Problem
 

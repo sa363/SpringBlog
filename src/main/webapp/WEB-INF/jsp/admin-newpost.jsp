@@ -26,8 +26,10 @@
 
     <div class="row">
         <div class="col-lg-10">
-            <textarea class="admin-new-post-content " >
-            </textarea>
+            <div class="new-post-content-wrap">
+                <textarea id ="new-post-content" >
+                </textarea>
+            </div>
             <div class="alert admin-new-post-alert">
                 <strong class="new-post-alert-msg">Well done!</strong>
                 <span class="new-post-alert-msg-notice">You successfully save this post.</span>

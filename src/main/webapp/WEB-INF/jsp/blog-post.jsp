@@ -12,8 +12,9 @@
         <p>
             <span class="glyphicon glyphicon-time"></span>Posted on <c:out value="${postDate}"/>
         </p>
+        <hr>
 
-        <p class="post-content"><c:out value="${post.postContent}"/></p>
+        <p class="post-content">${post.postContent}</p>
 
         <hr>
     </div>

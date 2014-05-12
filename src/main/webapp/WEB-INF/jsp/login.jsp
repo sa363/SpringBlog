@@ -15,8 +15,8 @@
     <!-- Custom styles for this template -->
     <link href="/resources/css/signin.css" rel="stylesheet">
 
-    <script type="text/javascript" src="/resources/js/jquery-1.4.min.js"></script>
-    <script type="text/javascript" src="/resources/js/json.min.js"></script>
+    <script type="text/javascript" src="/resources/js/lib/jquery-1.4.min.js"></script>
+    <script type="text/javascript" src="/resources/js/lib/json.min.js"></script>
 
   </head>
 
