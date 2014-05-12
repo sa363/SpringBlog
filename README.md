@@ -25,7 +25,8 @@ This is a tiny blog system based on SpringMVC and Hibernate,just for learning sp
 
 ##Problem
 
-1. Session out of time,how to save information of login user?
+1. Session out of time,how to save information of login user?  
+   Don't use @SessionAttributes annotation,but use the traditional session.setAttribute method to save login information.Spring docs about [SessionAttributes](http://docs.spring.io/spring/docs/3.2.8.RELEASE/javadoc-api/org/springframework/web/bind/annotation/SessionAttributes.html)
 2. How to design restful api for delete many objects?
 3. org.hibernate.HibernateException: No Session found for current thread
 

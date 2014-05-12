@@ -23,7 +23,6 @@ import java.util.*;
  */
 
 @Controller
-@SessionAttributes("user")
 @RequestMapping("/admin")
 public class AdminController {
 
@@ -36,13 +35,15 @@ public class AdminController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView processLogin(@RequestParam String name, @RequestParam String password){
+    public ModelAndView processLogin(@RequestParam String name, @RequestParam String password,HttpServletRequest request){
         ModelAndView mav = new ModelAndView();
+        HttpSession httpSession = request.getSession();
         mav.setViewName("admin.login");
         User user = this.springBlogService.findUserByName(name);
         if(user != null){
             if(user.getPassword().equals(password.trim())){
                 mav.addObject("user",user);
+                httpSession.setAttribute("user",user);
                 mav.setView(new RedirectView("admin/index"));
             }
 
