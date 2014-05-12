@@ -2,12 +2,26 @@
 
     var editBtn = $('.admin-comments-edit');
     var deleteBtn = $('.admin-comments-delete');
+
     var editModal = $('#editCommentModal');
 
+    var table = $('.admin-comments-table');
+    var tbody = table.find('tbody');
+
     function _init(){
-        _initEvent();
+        _listComment();
+
     }
     function _initEvent(){
+
+        $('tr',tbody).each(function(){
+
+            $(this).on('click',function(){
+                refreshBtnGroup();
+            });
+
+        });
+
 
         editBtn.on('click',function(){
             _findComment();
@@ -21,6 +35,47 @@
 
         });
 
+    }
+
+    function refreshBtnGroup(){
+
+        var checkArr =  $('tbody input[type=checkbox]:checked','.admin-comments-table');
+        var count = checkArr.length;
+
+        switch (count){
+            case 1:
+                editBtn.removeAttr('disabled');
+                deleteBtn.removeAttr('disabled');
+                break;
+            default:
+                editBtn.attr('disabled','disabled');
+                deleteBtn.attr('disabled','disabled');
+
+        }
+    }
+
+    function _loadCommentData(comments){
+
+        var html = [];
+        for(var i = 0; i < comments.length; i++){
+            var comment = comments[i];
+
+            html.push(' <tr data-key="'+comment.commentId+'">');
+            html.push(' <td>');
+            html.push(' <div class="checkbox">');
+            html.push(' <label>');
+            html.push(' <input type="checkbox" value="">');
+            html.push(' <h4>'+comment.commentContent+'</h4>');
+            html.push(' </label>');
+            html.push(' </div>');
+            html.push(' </td>');
+            html.push(' </tr>');
+
+        }
+        tbody.empty();
+        tbody.append(html.join(''));
+        _initEvent();
+        refreshBtnGroup();
     }
 
 
@@ -46,7 +101,7 @@
         editModal.modal('hide');
 
         $.put('/admin/comment/'+commentId,{commentContent : commentContent},function(){
-            $.admin.container.load('/admin/comments');
+            _listComment();
         });
     }
 
@@ -56,10 +111,20 @@
         var commentId = selection.parents('tr').attr('data-key');
 
         $.delete('/admin/comment/'+commentId,null,function(){
-            $.admin.container.load('/admin/comments');
+            _listComment();
         })
     }
 
+
+    function _listComment(){
+
+        $.get('/admin/comments',function(data){
+            var comments = data.comments;
+            _loadCommentData(comments);
+        })
+
+
+    }
 
 
 

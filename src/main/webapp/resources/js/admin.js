@@ -8,7 +8,7 @@
 
     function _init(){
 
-        $.admin.container.load('/admin/home',function(){
+        $.admin.container.load('/admin/view/home',function(){
 
             $('.menu-btn-home').addClass('active');
 
@@ -26,7 +26,7 @@
                 $(this).removeClass('active');
             });
 
-            $.admin.container.load('/admin/home',function(){
+            $.admin.container.load('/admin/view/home',function(){
 
                 $('.menu-btn-home').addClass('active');
 
@@ -38,7 +38,7 @@
                 $(this).removeClass('active');
             });
 
-            $.admin.container.load('/admin/new',function(){
+            $.admin.container.load('/admin/view/new',function(){
 
                 $('.menu-btn-new').addClass('active');
             });
@@ -47,7 +47,7 @@
             $('.admin-menu').find('a').each(function(){
                 $(this).removeClass('active');
             });
-            $.admin.container.load('/admin/posts',function(){
+            $.admin.container.load('/admin/view/posts',function(){
                 $('.menu-btn-posts').addClass('active');
 
             });
@@ -56,7 +56,7 @@
             $('.admin-menu').find('a').each(function(){
                 $(this).removeClass('active');
             });
-            $.admin.container.load('/admin/categories',function(){
+            $.admin.container.load('/admin/view/categories',function(){
                 $('.menu-btn-categories').addClass('active');
 
             });
@@ -65,7 +65,7 @@
             $('.admin-menu').find('a').each(function(){
                 $(this).removeClass('active');
             });
-            $.admin.container.load('/admin/comments',function(){
+            $.admin.container.load('/admin/view/comments',function(){
                 $('.menu-btn-comments').addClass('active');
             });
         });

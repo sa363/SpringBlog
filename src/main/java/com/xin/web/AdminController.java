@@ -66,42 +66,47 @@ public class AdminController {
         return mav;
     }
 
-    @RequestMapping(value = "/home",method = RequestMethod.GET)
+    @RequestMapping(value = "/view/home",method = RequestMethod.GET)
     public ModelAndView homeHandler(){
         return new ModelAndView("admin.home");
     }
 
-    @RequestMapping(value = "/new",method = RequestMethod.GET)
+    @RequestMapping(value = "/view/new",method = RequestMethod.GET)
     public ModelAndView newHandler(){
         return new ModelAndView("admin.new");
     }
 
-    @RequestMapping(value = "/posts",method = RequestMethod.GET)
+    @RequestMapping(value = "/view/posts",method = RequestMethod.GET)
     public ModelAndView postsHandler(){
 
-        Map<String, Object> model = new HashMap<String, Object>();
-
-        model.put("posts",this.springBlogService.findAllPost());
-
-        return new ModelAndView("admin.posts",model);
+        return new ModelAndView("admin.posts");
     }
 
-    @RequestMapping(value = "/categories",method = RequestMethod.GET)
-    public ModelAndView categoriesHandler(){
+    @RequestMapping(value = "/view/categories",method = RequestMethod.GET)
+    public ModelAndView categoryHandler(){
 
-        Map<String, Object> model = new HashMap<String, Object>();
-        model.put("categories",this.springBlogService.findAllCategory());
-
-        return new ModelAndView("admin.categories",model);
+        return new ModelAndView("admin.categories");
     }
 
-    @RequestMapping(value = "/comments",method = RequestMethod.GET)
+    @RequestMapping(value = "/view/comments",method = RequestMethod.GET)
     public ModelAndView commentsHandler(){
 
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("comments",this.springBlogService.findAllComment());
 
         return new ModelAndView("admin.comments",model);
+    }
+
+
+
+    @RequestMapping(value = "/posts",method = RequestMethod.GET)
+    public @ResponseBody Map<String,Object> listPost(){
+
+        Map<String, Object> model = new HashMap<String, Object>();
+
+        model.put("posts",this.springBlogService.findAllPost());
+
+        return model;
     }
 
     @RequestMapping(value = "/post",method = RequestMethod.POST)
@@ -161,6 +166,8 @@ public class AdminController {
         return resultMap;
     }
 
+
+
     @RequestMapping(value = "/posts/{postId}",method = RequestMethod.GET)
     public ModelAndView findPost(@PathVariable Long postId){
 
@@ -190,6 +197,8 @@ public class AdminController {
         return resultMap;
 
     }
+
+
 
     @RequestMapping(value = "/posts",method = RequestMethod.DELETE)
     public @ResponseBody void batchDeletePost(@RequestBody MultiValueMap<String, String> body){
@@ -226,6 +235,15 @@ public class AdminController {
         resultMap.put("returnCode", BlogConstant.RETURN_CODE_SUCC);
 
         return resultMap;
+    }
+
+    @RequestMapping(value = "/categories",method = RequestMethod.GET)
+    public  @ResponseBody Map<String , Object> listCategory(){
+
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("categories",this.springBlogService.findAllCategory());
+
+        return model;
     }
 
     @RequestMapping(value = "/category",method = RequestMethod.POST)
@@ -279,6 +297,15 @@ public class AdminController {
         return resultMap;
     }
 
+
+    @RequestMapping(value = "/comments",method = RequestMethod.GET)
+    public @ResponseBody Map<String,Object>  listComment(){
+
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("comments",this.springBlogService.findAllComment());
+
+        return model;
+    }
 
     @RequestMapping(value = "/comment/{commentId}", method = RequestMethod.GET)
     public @ResponseBody Map<String,Object> findComment(@PathVariable Long commentId){

@@ -7,14 +7,21 @@
     var createModal = $('#createCategoryModal');
     var editModal = $('#editCategoryModal');
 
+    var table = $('.admin-categories-table');
+    var tbody = table.find('tbody');
+
    function _init(){
+
        _initEvent();
+       _listCategory();
+
    }
 
     function _initEvent(){
 
-        createBtn.on('click',function(){
 
+        createBtn.on('click',function(){
+            createModal.find('.category-name').val('');
             createModal.modal('show');
 
         });
@@ -42,7 +49,52 @@
 
     }
 
+    function refreshBtnGroup(){
 
+        var checkArr =  $('tbody input[type=checkbox]:checked','.admin-categories-table');
+        var count = checkArr.length;
+
+        switch (count){
+            case 1:
+                editBtn.removeAttr('disabled');
+                deleteBtn.removeAttr('disabled');
+                break;
+            default:
+                editBtn.attr('disabled','disabled');
+                deleteBtn.attr('disabled','disabled');
+
+        }
+    }
+
+    function _loadCategoryData(categories){
+        var html = [];
+        for(var i = 0; i < categories.length; i++){
+            var category = categories[i];
+
+            html.push(' <tr data-key="'+category.catId+'">');
+            html.push(' <td>');
+            html.push(' <div class="checkbox">');
+            html.push(' <label>');
+            html.push(' <input type="checkbox" value="">');
+            html.push(' <h4>'+category.catName+'</h4>');
+            html.push(' </label>');
+            html.push(' </div>');
+            html.push(' </td>');
+            html.push(' </tr>');
+
+        }
+        tbody.empty();
+        tbody.append(html.join(''));
+
+        $('tr',tbody).each(function(){
+
+            $(this).on('click',function(){
+                refreshBtnGroup();
+            });
+
+        });
+
+    }
 
 
     //ajax
@@ -55,7 +107,7 @@
 
         $.post('/admin/category',{categoryName:name},function(){
 
-            $.admin.container.load('/admin/categories');
+            _listCategory();
 
         });
 
@@ -92,7 +144,7 @@
 
         $.put('/admin/category/'+categoryId,{categoryName:categoryName},function(){
 
-            $.admin.container.load('/admin/categories');
+            _listCategory();
 
         });
     }
@@ -106,9 +158,19 @@
 
         $.delete('/admin/category/'+categoryId,null,function(data){
 
-            $.admin.container.load('/admin/categories');
+            _listCategory();
 
         });
+
+    }
+
+    function _listCategory(){
+
+        $.get('/admin/categories',function(data){
+            var categories = data.categories;
+            _loadCategoryData(categories);
+        })
+
 
     }
 

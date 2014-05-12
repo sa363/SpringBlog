@@ -13,25 +13,15 @@
     var openCommentsBtn = $('.admin-posts-open-comments');
 
 
-
-
     function _init(){
-
         _initEvent();
-        refreshBtnGroup();
-
+        _listPost();
     }
 
+
+
+
     function _initEvent(){
-
-
-        $('tr',tbody).each(function(){
-
-            $(this).on('click',function(){
-                refreshBtnGroup();
-            });
-
-        });
 
         readBtn.on('click',function(){
 
@@ -125,6 +115,37 @@
 
 
 
+    function _loadPostData(posts){
+        var html = [];
+        for(var i = 0; i < posts.length; i++){
+
+            var post = posts[i];
+
+            html.push(' <tr data-key="'+post.postId+'">');
+            html.push(' <td>');
+            html.push(' <div class="checkbox">');
+            html.push(' <label>');
+            html.push(' <input type="checkbox" value="">');
+            html.push(' <h4>'+post.postTitle+'</h4>');
+            html.push(' </label>');
+            html.push(' </div>');
+            html.push(' </td>');
+            html.push(' </tr>');
+
+        }
+        tbody.empty();
+        tbody.append(html.join(''));
+
+        $('tr',tbody).each(function(){
+
+            $(this).on('click',function(){
+                refreshBtnGroup();
+            });
+
+        });
+
+    }
+
     //ajax
 
     function _readPost(){
@@ -149,7 +170,7 @@
 
         $.delete('/admin/post/'+postId,null,function(response,textStatus){
 
-            $.admin.container.load('/admin/posts');
+            _listPost();
         });
 
 
@@ -187,6 +208,16 @@
         });
 
     }
+
+    function _listPost(){
+
+        $.get('/admin/posts', function(data){
+            var posts = data.posts;
+            _loadPostData(posts);
+        });
+
+    }
+
 
 
     _init();

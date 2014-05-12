@@ -14,21 +14,7 @@
 
             <table class="table table-hover admin-posts-table">
                 <tbody>
-                    <c:if test="${posts != null}">
 
-                        <c:forEach items="${posts}" var="item">
-                            <tr data-key="${item.postId}">
-                                <td>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" value="">
-                                            <h4>${item.postTitle}</h4>
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </c:if>
                 </tbody>
             </table>
             <div class="alert admin-posts-alert">
