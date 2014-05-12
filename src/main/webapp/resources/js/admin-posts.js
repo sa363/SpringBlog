@@ -31,6 +31,8 @@
 
         editBtn.on('click',function(){
 
+            _editPost();
+
         });
 
         deleteBtn.on('click',function(){
@@ -156,10 +158,34 @@
 
         console.log(postId);
 
-        $.admin.container.load('/admin/posts/'+postId,function(){
+        $.admin.container.load('/admin/view/post/'+postId,function(){
 
         });
 
+    }
+
+    function _editPost(){
+
+        var selection = $('tbody input[type=checkbox]:checked','.admin-posts-table');
+
+        var postId = selection.parents('tr').attr('data-key');
+
+        $.get('/admin/post/'+postId,function(data){
+
+            var post = data.post;
+            var category = data.category;
+
+            $('.admin-posts-container').load('/admin/view/new',function(){
+
+                $('#new-post-content').val(post.postContent);
+                $('.admin-new-post-title').val(post.postTitle);
+                $('.admin-new-post-title').attr('data-key',post.postId);
+                $('.newpost-category-btn-name').html(category.catName);
+                $('.newpost-category-btn-name').attr('data-key',category.catId);
+
+            });
+
+        });
     }
 
     function _deletePost(){

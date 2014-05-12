@@ -91,11 +91,29 @@ public class AdminController {
     @RequestMapping(value = "/view/comments",method = RequestMethod.GET)
     public ModelAndView commentsHandler(){
 
-        Map<String, Object> model = new HashMap<String, Object>();
-        model.put("comments",this.springBlogService.findAllComment());
-
-        return new ModelAndView("admin.comments",model);
+        return new ModelAndView("admin.comments");
     }
+
+    @RequestMapping(value = "/view/post/{postId}",method = RequestMethod.GET)
+    public ModelAndView postHandler(@PathVariable Long postId){
+
+        Map<String,Object> model = new HashMap<String, Object>();
+
+        Post post = this.springBlogService.findPostById(postId);
+        Category category = this.springBlogService.findCategoryById(post.getCategoryId());
+        User author = this.springBlogService.findUserById(post.getAuthorId());
+        SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss E");
+        String postDate = dateformat.format(post.getPostDate());
+
+
+        model.put("post",post);
+        model.put("category",category);
+        model.put("author",author.getUserName());
+        model.put("postDate",postDate);
+
+        return new ModelAndView("admin.post",model);
+    }
+
 
 
 
@@ -168,22 +186,23 @@ public class AdminController {
 
 
 
-    @RequestMapping(value = "/posts/{postId}",method = RequestMethod.GET)
-    public ModelAndView findPost(@PathVariable Long postId){
+    @RequestMapping(value = "/post/{postId}",method = RequestMethod.GET)
+    public @ResponseBody Map<String,Object>  findPost(@PathVariable Long postId){
 
         Map<String,Object> model = new HashMap<String, Object>();
 
         Post post = this.springBlogService.findPostById(postId);
+        Category category = this.springBlogService.findCategoryById(post.getCategoryId());
         User author = this.springBlogService.findUserById(post.getAuthorId());
         SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss E");
         String postDate = dateformat.format(post.getPostDate());
 
-
         model.put("post",post);
+        model.put("category",category);
         model.put("author",author.getUserName());
         model.put("postDate",postDate);
 
-        return new ModelAndView("admin.posts.show",model);
+        return model;
     }
 
     @RequestMapping(value = "/post/{postId}",method = RequestMethod.DELETE)

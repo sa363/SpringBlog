@@ -128,7 +128,7 @@
 
                 var postId = data.postId;
 
-                $.admin.container.load('/admin/posts/'+postId,function(){
+                $.admin.container.load('/admin/view/post/'+postId,function(){
 
                 });
 

@@ -73,7 +73,7 @@
 
     function _findPost(postId){
 
-        blogContainer.load('post/'+postId);
+        blogContainer.load('/view/post/'+postId);
     }
 
     function _listCategory(){

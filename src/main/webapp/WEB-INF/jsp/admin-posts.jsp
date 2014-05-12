@@ -8,7 +8,7 @@
   <body>
 
     <div class="row">
-        <div class="col-lg-10">
+        <div class="col-lg-10 admin-posts-container">
 
             <h2>All Posts</h2>
 

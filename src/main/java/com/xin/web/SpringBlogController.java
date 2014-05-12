@@ -42,7 +42,7 @@ public class SpringBlogController {
     }
 
 
-    @RequestMapping(value = "/post/{postId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/view/post/{postId}", method = RequestMethod.GET)
     public ModelAndView findPost(@PathVariable Long postId){
 
         Map<String,Object> model = new HashMap<String, Object>();
