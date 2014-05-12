@@ -16,10 +16,10 @@
 
     <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap-wysihtml5.css"/>
 
+
     <!-- Add custom CSS here -->
     <link href="/resources/css/admin.css" rel="stylesheet">
 
-    <script src="/resources/js/lib/jquery-1.10.2.js"></script>
 
 </head>
 
@@ -45,7 +45,7 @@
     </div>
 
     <!-- JavaScript -->
-
+    <script src="/resources/js/lib/jquery-1.10.2.js"></script>
     <script src="/resources/js/lib/bootstrap.js"></script>
     <script src="/resources/js/lib/json.min.js"></script>
     <script src="/resources/js/lib/wysihtml5-0.3.0.js"></script>

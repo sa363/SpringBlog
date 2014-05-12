@@ -7,6 +7,13 @@
 
     function _init(){
 
+        _initEditor();
+        _initCategorySelectMenu();
+        _initEvent();
+    }
+
+    function _initEditor(){
+
         $('#new-post-content').wysihtml5({
             "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
             "emphasis": true, //Italics, bold, etc. Default true
@@ -15,20 +22,25 @@
             "link": true, //Button to insert a link. Default true
             "image": true, //Button to insert an image. Default true,
             "color": false, //Button to change color of font
-            "size": 'sm' //Button size like sm, xs etc.
+            "size": 'sm', //Button size like sm, xs etc.
+            stylesheets: ["/resources/css/bootstrap3-wysiwyg5-color.css"]
         });
-        _initCategorySelectMenu();
-        _initEvent();
+
     }
+
     function _initCategorySelectMenu(){
+
+        _listCategory();
+
+    }
+    function _loadCategoryData(categories){
+
         var html = '';
         var menu = $('.newpost-category-select-menu');
 
-
-        var data = [{name:'C++',id:1},{name:'Java',id:2},{name:'Python',id:3}];
-        for(var i = 0; i < data.length; i++){
-            var categoryName = data[i].name;
-            html += '<li><a data-key="'+data[i].id+'" href="#">'+categoryName+'</a></li>';
+        for(var i = 0; i < categories.length; i++){
+            var category = categories[i];
+            html += '<li><a data-key="'+category.catId+'" href="#">'+category.catName+'</a></li>';
         }
         menu.append($(html));
 
@@ -126,6 +138,15 @@
         });
 
     }
+    function _listCategory(){
+        $.get('/categories',function(data){
+            _loadCategoryData(data.categories);
+
+        });
+    }
+
+
+
     _init();
 
 

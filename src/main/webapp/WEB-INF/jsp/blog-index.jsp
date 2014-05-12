@@ -14,7 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="/resources/css/blog.css" rel="stylesheet">
-    <script src="/resources/js/lib/jquery-1.10.2.js"></script>
+
 </head>
 
 <body>
@@ -39,7 +39,7 @@
 
 
   <!-- JavaScript -->
-
+  <script src="/resources/js/lib/jquery-1.10.2.js"></script>
   <script src="/resources/js/lib/bootstrap.js"></script>
   <script src="/resources/js/lib/json.min.js"></script>
   <script src="/resources/js/blog.js"></script>
