@@ -14,7 +14,7 @@
         <property name="cache.region.factory_class">org.hibernate.cache.EhCacheRegionFactory</property>
         <property name="hibernate.cache.use_query_cache">true</property>
 
-        <class-cache class="com.xin.model.Hello" usage="read-write"/>
+
         <class-cache class="com.xin.model.Category" usage="read-write"/>
         <class-cache class="com.xin.model.Comment" usage="read-write"/>
         <class-cache class="com.xin.model.Post" usage="read-write"/>

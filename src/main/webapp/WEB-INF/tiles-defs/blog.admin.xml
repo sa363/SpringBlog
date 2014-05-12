@@ -32,7 +32,25 @@
     </definition>
 
     <definition name="admin.posts.show" extends="blank.template">
+        <put-attribute name="content" value="/WEB-INF/jsp/blog-post.jsp" />
+    </definition>
+
+
+
+    <definition name="blog.index" template="/WEB-INF/jsp/blog-index.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsp/blog-header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/blog-menu.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/blog-footer.jsp" />
+    </definition>
+
+    <definition name="blog.posts" extends="blank.template">
         <put-attribute name="content" value="/WEB-INF/jsp/blog-posts.jsp" />
     </definition>
+
+    <definition name="blog.post" extends="blank.template">
+        <put-attribute name="content" value="/WEB-INF/jsp/blog-post.jsp" />
+    </definition>
+
+
 
 </tiles-definitions>
