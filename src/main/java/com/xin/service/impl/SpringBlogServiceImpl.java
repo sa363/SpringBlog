@@ -139,6 +139,12 @@ public class SpringBlogServiceImpl implements SpringBlogService {
         return this.commentRepo.findAll();
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public Collection<Comment> findCommentByPostId(Long postId) throws DataAccessException {
+        return this.commentRepo.findCommentByPostId(postId);
+    }
+
     @Transactional
     @Override
     public void deleteComment(Long id) throws DataAccessException {

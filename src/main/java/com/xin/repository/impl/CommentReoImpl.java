@@ -53,6 +53,15 @@ public class CommentReoImpl implements CommentRepo{
     }
 
     @Override
+    public Collection<Comment> findCommentByPostId(Long postId) throws DataAccessException {
+
+        Query query =  this.sessionFactory.getCurrentSession().createQuery("from Comment where postId=?");
+        query.setLong(0,postId);
+
+        return  query.list();
+    }
+
+    @Override
     public void delete(Long id) throws DataAccessException {
         Query query =  this.getCurrentSession().createQuery("delete Comment where commentId=?");
         query.setLong(0,id);

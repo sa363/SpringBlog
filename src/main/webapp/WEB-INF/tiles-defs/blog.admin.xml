@@ -32,7 +32,7 @@
     </definition>
 
     <definition name="admin.post" extends="blank.template">
-        <put-attribute name="content" value="/WEB-INF/jsp/blog-post.jsp" />
+        <put-attribute name="content" value="/WEB-INF/jsp/admin-post.jsp" />
     </definition>
 
 

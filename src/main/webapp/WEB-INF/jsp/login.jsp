@@ -28,8 +28,8 @@
 
         <h2 class="form-signin-heading">Please sign in</h2>
 
-        <input name="name"  type="text" class="form-control form-signin-name" placeholder="User name" required autofocus>
-        <input name="password" type="password" class="form-control form-signin-password" placeholder="Password" required>
+        <input name="name"  value="admin" type="text" class="form-control form-signin-name" placeholder="User name" required autofocus>
+        <input name="password" value="123456" type="password" class="form-control form-signin-password" placeholder="Password" required>
 
         <label class="checkbox">
             <input type="checkbox" value="remember-me"> Remember me

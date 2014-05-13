@@ -1,6 +1,7 @@
 package com.xin.web;
 
-import com.sun.deploy.net.HttpResponse;
+
+import com.xin.model.Comment;
 import com.xin.model.Post;
 import com.xin.model.User;
 import com.xin.service.SpringBlogService;
@@ -8,9 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,6 +65,34 @@ public class SpringBlogController {
 
         Map<String,Object> resultMap = new HashMap<String, Object>();
         resultMap.put("categories",this.springBlogService.findAllCategory());
+        return resultMap;
+
+    }
+
+    @RequestMapping(value = "/post/{postId}/comment", method = RequestMethod.POST)
+    public @ResponseBody Map<String,Object> saveComment(@PathVariable Long postId, @RequestParam String name, @RequestParam String commentContent){
+
+        Map<String,Object> resultMap = new HashMap<String, Object>();
+
+        Comment comment = new Comment();
+        comment.setCommentContent(commentContent);
+        comment.setPostId(postId);
+        comment.setCommentAuthor(name);
+        comment.setCommentDate(new Date());
+
+        this.springBlogService.saveComment(comment);
+
+        return resultMap;
+
+    }
+
+    @RequestMapping(value = "/post/{postId}/comments", method = RequestMethod.GET)
+    public @ResponseBody Map<String,Object> findCommentByPostId(@PathVariable Long postId){
+
+        Map<String,Object> resultMap = new HashMap<String, Object>();
+
+        resultMap.put("comments",this.springBlogService.findCommentByPostId(postId));
+
         return resultMap;
 
     }

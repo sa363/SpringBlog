@@ -18,6 +18,10 @@ public interface CommentRepo {
 
     Collection<Comment> findAll() throws DataAccessException;
 
+    Collection<Comment> findCommentByPostId(Long postId) throws DataAccessException;
+
     void delete(Long id) throws DataAccessException;
+
+
 
 }

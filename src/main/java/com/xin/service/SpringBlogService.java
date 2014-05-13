@@ -53,6 +53,8 @@ public interface SpringBlogService {
 
     Collection<Comment> findAllComment() throws DataAccessException;
 
+    Collection<Comment> findCommentByPostId(Long postId) throws DataAccessException;
+
     void deleteComment(Long id) throws DataAccessException;
 
 }
