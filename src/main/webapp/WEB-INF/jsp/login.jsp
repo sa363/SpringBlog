@@ -11,12 +11,12 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+    <!--BootstrapValidator CSS-->
+    <link rel="stylesheet" href="/resources/css/bootstrapValidator.css"/>
 
     <!-- Custom styles for this template -->
     <link href="/resources/css/signin.css" rel="stylesheet">
 
-    <script type="text/javascript" src="/resources/js/lib/jquery-1.4.min.js"></script>
-    <script type="text/javascript" src="/resources/js/lib/json.min.js"></script>
 
   </head>
 
@@ -24,17 +24,19 @@
 
     <div class="container">
 
-      <form class="form-signin" role="form" method="post">
+      <form id="form-signin" method="post">
 
         <h2 class="form-signin-heading">Please sign in</h2>
-
-        <input name="name"  value="admin" type="text" class="form-control form-signin-name" placeholder="User name" required autofocus>
-        <input name="password" value="123456" type="password" class="form-control form-signin-password" placeholder="Password" required>
-
-        <label class="checkbox">
+        <div class="form-group">
+          <input name="name"  type="text" class="form-control form-signin-name" placeholder="User name" autofocus>
+        </div>
+        <div class="form-group">
+          <input name="password"  type="password" class="form-control form-signin-password" placeholder="Password">
+        </div>
+          <label class="checkbox">
             <input type="checkbox" value="remember-me"> Remember me
         </label>
-        <button type ="submit" class="btn btn-lg btn-primary btn-block ">Sign in</button>
+        <button type ="submit" class="btn btn-lg btn-primary btn-block " id="sign-in-btn">Sign in</button>
 
       </form>
 
@@ -44,9 +46,10 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="/resources/js/lib/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/resources/js/lib/bootstrap.js"></script>
+    <script type="text/javascript" src="/resources/js/lib/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="/resources/js/login.js"></script>
   </body>
 
-  <script>
-
-  </script>
 </html>
