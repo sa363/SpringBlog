@@ -31,7 +31,7 @@ This is a tiny blog system based on SpringMVC and Hibernate,just for learning sp
 2. How to design restful api for delete many objects?
 3. org.hibernate.HibernateException: No Session found for current thread
 4. Error too much recursion while using BootstrapValidator
-   Must wrap the element with class form-group,such as
+   Must wrap the element with class form-group,such as  
    '''html
          <div class="form-group">
            <input name="name"  type="text" class="form-control form-signin-name" placeholder="User name" autofocus>
