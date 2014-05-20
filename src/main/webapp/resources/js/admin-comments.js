@@ -1,7 +1,6 @@
 (function($){
 
-    var editBtn = $('.admin-comments-edit');
-    var deleteBtn = $('.admin-comments-delete');
+
 
     var editModal = $('#editCommentModal');
 
@@ -23,14 +22,14 @@
         });
 
 
-        editBtn.on('click',function(){
+        $('.admin-comments-edit').on('click',function(){
             _findComment();
         });
         editModal.find('.edit-comment-btn').on('click',function(){
             _updateComment();
         });
 
-        deleteBtn.on('click',function(){
+         $('.admin-comments-delete').on('click',function(){
             _deleteComment();
 
         });
@@ -44,14 +43,23 @@
 
         switch (count){
             case 1:
-                editBtn.removeAttr('disabled');
-                deleteBtn.removeAttr('disabled');
+                $('.admin-comments-edit').removeAttr('disabled');
+                 $('.admin-comments-delete').removeAttr('disabled');
                 break;
             default:
-                editBtn.attr('disabled','disabled');
-                deleteBtn.attr('disabled','disabled');
+                $('.admin-comments-edit').attr('disabled','disabled');
+                 $('.admin-comments-delete').attr('disabled','disabled');
 
         }
+    }
+
+    function _buildBtnGroup(){
+        var html = [];
+        var btnGroup = $('.comments-btn-group');
+        html.push('  <button type="button" class="btn btn-default admin-comments-edit">Edit</button>');
+        html.push(' <button type="button" class="btn btn-default admin-comments-delete">Delete</button>');
+        btnGroup.empty();
+        btnGroup.append(html.join(''));
     }
 
     function _loadCommentData(comments){
@@ -74,6 +82,8 @@
         }
         tbody.empty();
         tbody.append(html.join(''));
+
+        _buildBtnGroup();
         _initEvent();
         refreshBtnGroup();
     }

@@ -36,10 +36,8 @@
                 <span class="admin-categories-alert-msg-notice"></span>
             </div>
 
-            <div class="btn-group new-post-btn-group">
-                <button type="button" class="btn btn-default admin-categories-create">Create</button>
-                <button type="button" class="btn btn-default admin-categories-edit">Edit</button>
-                <button type="button" class="btn btn-default admin-categories-delete">Delete</button>
+            <div class="btn-group categories-btn-group">
+
             </div>
 
             <!-- Modal -->

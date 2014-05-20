@@ -1,9 +1,5 @@
 (function($) {
 
-    var createBtn = $('.admin-categories-create');
-    var editBtn = $('.admin-categories-edit');
-    var deleteBtn = $('.admin-categories-delete');
-
     var createModal = $('#createCategoryModal');
     var editModal = $('#editCategoryModal');
 
@@ -12,7 +8,6 @@
 
    function _init(){
 
-       _initEvent();
        _listCategory();
 
    }
@@ -20,7 +15,7 @@
     function _initEvent(){
 
 
-        createBtn.on('click',function(){
+        $('.admin-categories-create').on('click',function(){
             createModal.find('.category-name').val('');
             createModal.modal('show');
 
@@ -32,7 +27,7 @@
 
         });
 
-        editBtn.on('click',function(){
+        $('.admin-categories-edit').on('click',function(){
 
             _editCategory();
 
@@ -43,8 +38,16 @@
             _updateCategory();
         });
 
-        deleteBtn.on('click',function(){
+        $('.admin-categories-delete').on('click',function(){
            _deleteCategory();
+        });
+
+        $('tr',tbody).each(function(){
+
+            $(this).on('click',function(){
+                refreshBtnGroup();
+            });
+
         });
 
     }
@@ -56,14 +59,24 @@
 
         switch (count){
             case 1:
-                editBtn.removeAttr('disabled');
-                deleteBtn.removeAttr('disabled');
+                $('.admin-categories-edit').removeAttr('disabled');
+                $('.admin-categories-delete').removeAttr('disabled');
                 break;
             default:
-                editBtn.attr('disabled','disabled');
-                deleteBtn.attr('disabled','disabled');
+                $('.admin-categories-edit').attr('disabled','disabled');
+                $('.admin-categories-delete').attr('disabled','disabled');
 
         }
+    }
+
+    function _buildBtnGroup(){
+        var html = [];
+        var btnGroup = $('.categories-btn-group');
+        html.push(' <button type="button" class="btn btn-default admin-categories-create">Create</button>');
+        html.push(' <button type="button" class="btn btn-default admin-categories-edit">Edit</button>');
+        html.push(' <button type="button" class="btn btn-default admin-categories-delete">Delete</button>');
+        btnGroup.empty();
+        btnGroup.append(html.join(''));
     }
 
     function _loadCategoryData(categories){
@@ -86,13 +99,9 @@
         tbody.empty();
         tbody.append(html.join(''));
 
-        $('tr',tbody).each(function(){
-
-            $(this).on('click',function(){
-                refreshBtnGroup();
-            });
-
-        });
+        _buildBtnGroup();
+        _initEvent();
+        refreshBtnGroup();
 
     }
 

@@ -6,15 +6,9 @@
     var table = $('.admin-posts-table');
     var tbody = table.find('tbody');
 
-    var readBtn = $('.admin-posts-read');
-    var editBtn = $('.admin-posts-edit');
-    var deleteBtn = $('.admin-posts-delete');
-    var closeCommentsBtn = $('.admin-posts-close-comments');
-    var openCommentsBtn = $('.admin-posts-open-comments');
-
 
     function _init(){
-        _initEvent();
+
         _listPost();
     }
 
@@ -23,33 +17,41 @@
 
     function _initEvent(){
 
-        readBtn.on('click',function(){
+        $('.admin-posts-read').on('click',function(){
 
             _readPost();
 
         });
 
-        editBtn.on('click',function(){
+         $('.admin-posts-edit').on('click',function(){
 
             _editPost();
 
         });
 
-        deleteBtn.on('click',function(){
+        $('.admin-posts-delete').on('click',function(){
 
             _deletePost();
 
         });
 
-        closeCommentsBtn.on('click',function(){
+        $('.admin-posts-close-comments').on('click',function(){
 
             _changeCommentStatus(COMMETNS_STAUTS_CLOSE);
 
         });
 
-        openCommentsBtn.on('click', function(){
+        $('.admin-posts-open-comments').on('click', function(){
 
             _changeCommentStatus(COMMETNS_STAUTS_OPEN);
+
+        });
+
+        $('tr',tbody).each(function(){
+
+            $(this).on('click',function(){
+                refreshBtnGroup();
+            });
 
         });
 
@@ -65,57 +67,35 @@
 
        switch (count){
            case 1:
-               readBtn.removeAttr('disabled');
-               editBtn.removeAttr('disabled');
-               deleteBtn.removeAttr('disabled');
-               closeCommentsBtn.removeAttr('disabled');
-               openCommentsBtn.removeAttr('disabled');
+               $('.admin-posts-read').removeAttr('disabled');
+                $('.admin-posts-edit').removeAttr('disabled');
+               $('.admin-posts-delete').removeAttr('disabled');
+               $('.admin-posts-close-comments').removeAttr('disabled');
+               $('.admin-posts-open-comments').removeAttr('disabled');
                break;
 
            default:
 
-               readBtn.attr('disabled','disabled');
-               editBtn.attr('disabled','disabled');
-               deleteBtn.attr('disabled','disabled');
-               closeCommentsBtn.attr('disabled','disabled');
-               openCommentsBtn.attr('disabled','disabled');
+               $('.admin-posts-read').attr('disabled','disabled');
+                $('.admin-posts-edit').attr('disabled','disabled');
+               $('.admin-posts-delete').attr('disabled','disabled');
+               $('.admin-posts-close-comments').attr('disabled','disabled');
+               $('.admin-posts-open-comments').attr('disabled','disabled');
 
        }
     }
-//    function refreshBtnGroup(){
-//
-//        var checkArr =  $('tbody input[type=checkbox]:checked','.admin-posts-table');
-//        var count = checkArr.length;
-//
-//        console.log('refresh----'+count);
-//
-//        switch (count){
-//            case 0:
-//                readBtn.attr('disabled','disabled');
-//                editBtn.attr('disabled','disabled');
-//                deleteBtn.attr('disabled','disabled');
-//                closeCommentsBtn.attr('disabled','disabled');
-//                break;
-//
-//            case 1:
-//                readBtn.removeAttr('disabled');
-//                editBtn.removeAttr('disabled');
-//                deleteBtn.removeAttr('disabled');
-//                closeCommentsBtn.removeAttr('disabled');
-//                break;
-//
-//            default:
-//
-//                deleteBtn.removeAttr('disabled');
-//                closeCommentsBtn.removeAttr('disabled');
-//
-//                readBtn.attr('disabled','disabled');
-//                editBtn.attr('disabled','disabled');
-//
-//        }
-//    }
 
-
+    function _buildBtnGroup(){
+        var html = [];
+        var btnGroup = $('.new-post-btn-group');
+        html.push(' <button type="button" class="btn btn-default admin-posts-read">Read</button>');
+        html.push(' <button type="button" class="btn btn-default admin-posts-edit">Edit</button>');
+        html.push(' <button type="button" class="btn btn-default admin-posts-delete">Delete</button>');
+        html.push(' <button type="button" class="btn btn-default admin-posts-close-comments">Close comments</button>');
+        html.push(' <button type="button" class="btn btn-default admin-posts-open-comments">Open comments</button>');
+        btnGroup.empty();
+        btnGroup.append(html.join(''));
+    }
 
     function _loadPostData(posts){
         var html = [];
@@ -138,13 +118,9 @@
         tbody.empty();
         tbody.append(html.join(''));
 
-        $('tr',tbody).each(function(){
-
-            $(this).on('click',function(){
-                refreshBtnGroup();
-            });
-
-        });
+        _buildBtnGroup();
+        _initEvent();
+        refreshBtnGroup();
 
     }
 

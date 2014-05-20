@@ -12,6 +12,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -35,21 +36,33 @@ public class AdminController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView processLogin(@RequestParam String name, @RequestParam String password,HttpServletRequest request){
-        ModelAndView mav = new ModelAndView();
+    public @ResponseBody Map<String,Object> processLogin(@RequestParam String name, @RequestParam String password,
+                                                         HttpServletRequest request){
+        Map<String,Object> resultMap = new HashMap<String, Object>();
         HttpSession httpSession = request.getSession();
-        mav.setViewName("admin.login");
+
+
         User user = this.springBlogService.findUserByName(name);
         if(user != null){
             if(user.getPassword().equals(password.trim())){
-                mav.addObject("user",user);
+
                 httpSession.setAttribute("user",user);
-                mav.setView(new RedirectView("admin/index"));
+                resultMap.put("resultCode",BlogConstant.RETURN_CODE_SUCC);
+                resultMap.put("msg","login success");
+                resultMap.put("user",user);
+
+            }else {
+                resultMap.put("resultCode",BlogConstant.RETURN_CODE_ERR);
+                resultMap.put("msg","Password error!");
             }
 
-            return mav;
+        }else {
+            resultMap.put("resultCode",BlogConstant.RETURN_CODE_ERR);
+            resultMap.put("msg","The user does not exist!");
+
         }
-        return mav;
+        return resultMap;
+
     }
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)

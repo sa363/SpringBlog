@@ -33,10 +33,13 @@
         <div class="form-group">
           <input name="password"  type="password" class="form-control form-signin-password" placeholder="Password">
         </div>
-          <label class="checkbox">
+        <div class="alert alert-danger admin-login-alert">
+          <strong class="admin-login-alert-msg"></strong>
+        </div>
+        <label class="checkbox">
             <input type="checkbox" value="remember-me"> Remember me
         </label>
-        <button type ="submit" class="btn btn-lg btn-primary btn-block " id="sign-in-btn">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block " id="sign-in-btn">Sign in</button>
 
       </form>
 
@@ -46,10 +49,11 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="/resources/js/lib/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="/resources/js/lib/bootstrap.js"></script>
-    <script type="text/javascript" src="/resources/js/lib/bootstrapValidator.js"></script>
-    <script type="text/javascript" src="/resources/js/login.js"></script>
+    <script src="/resources/js/lib/jquery-1.10.2.js"></script>
+    <script src="/resources/js/lib/bootstrap.js"></script>
+    <script src="/resources/js/lib/json.min.js"></script>
+    <script src="/resources/js/lib/bootstrapValidator.js"></script>
+    <script src="/resources/js/login.js"></script>
   </body>
 
 </html>

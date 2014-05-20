@@ -28,9 +28,8 @@
                 </c:if>
                 </tbody>
             </table>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default admin-comments-edit">Edit</button>
-                <button type="button" class="btn btn-default admin-comments-delete">Delete</button>
+            <div class="btn-group comments-btn-group">
+
             </div>
 
             <!-- Modal -->

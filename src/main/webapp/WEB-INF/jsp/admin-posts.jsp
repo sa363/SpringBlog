@@ -22,11 +22,7 @@
                 <span class="admin-posts-alert-msg-notice"></span>
             </div>
             <div class="btn-group new-post-btn-group">
-                <button type="button" class="btn btn-default admin-posts-read">Read</button>
-                <button type="button" class="btn btn-default admin-posts-edit">Edit</button>
-                <button type="button" class="btn btn-default admin-posts-delete">Delete</button>
-                <button type="button" class="btn btn-default admin-posts-close-comments">Close comments</button>
-                <button type="button" class="btn btn-default admin-posts-open-comments">Open comments</button>
+
             </div>
         </div><!-- /.col-lg-10 -->
     </div><!-- /.row -->
