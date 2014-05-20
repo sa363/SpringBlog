@@ -28,7 +28,7 @@
             html.push('<h3>');
             html.push(comment.commentAuthor+' ');
             html.push('<small>');
-            html.push(' '+commentDate.toGMTString());
+            html.push(' '+commentDate.toLocaleString());
             html.push('</small>');
             html.push('</h3>');
             html.push('<p>');
